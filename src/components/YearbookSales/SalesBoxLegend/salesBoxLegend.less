@@ -1,0 +1,26 @@
+@import "../../App/colors";
+
+.legend-square {
+  @square-size: 13px;
+  width: @square-size;
+  height: @square-size;
+  margin-bottom: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+  display: inline-block;
+
+  &.legend-square-green {
+    background: @primary-green;
+  }
+  &.legend-square-yellow {
+    background: @primary-yellow;
+  }
+}
+.legend-data {
+  &.legend-data-green {
+    color: @primary-green;
+  }
+  &.legend-data-yellow {
+    color: @primary-yellow;
+  }
+}

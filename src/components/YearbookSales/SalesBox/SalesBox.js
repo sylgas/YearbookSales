@@ -5,6 +5,11 @@ import SalesBoxChart from "../SalesBoxChart/SalesBoxChart";
 import PropType from "prop-types";
 
 class SalesBox extends React.Component {
+
+    componentDidMount() {
+        this.props.actions.fetchSales();
+    }
+
     render() {
         return (
             <div className="box">
@@ -32,9 +37,12 @@ class SalesBox extends React.Component {
 }
 
 SalesBox.propTypes = {
-    campus: PropType.number.isRequired,
-    online: PropType.number.isRequired,
-    max: PropType.number.isRequired
+    campus: PropType.number,
+    online: PropType.number,
+    max: PropType.number,
+    finalSales: PropType.string,
+    personalization: PropType.string,
+    quantity: PropType.string
 };
 
 export default SalesBox;

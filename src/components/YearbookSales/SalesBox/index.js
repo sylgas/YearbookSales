@@ -2,6 +2,8 @@ import './salesBox.less';
 
 import {connect} from 'react-redux';
 import SalesBox from "./SalesBox";
+import * as salesEvents from "../../../actions/salesEvents";
+import {bindActionCreators} from "redux";
 
 function mapStateToProps(state) {
     return {
@@ -15,10 +17,13 @@ function mapStateToProps(state) {
 }
 
 function formatDate(date) {
+    if (!date) {
+        return '';
+    }
     return [
-        pad(date.getMonth() + 1, 2),
+        pad(date.getMonth(), 1),
         pad(date.getDate(), 2),
-        pad(date.getYear(), 2),
+        pad(date.getFullYear(), 4),
     ].join('/');
 }
 
@@ -29,7 +34,9 @@ function pad(numberString, size) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {};
+    return {
+        actions: bindActionCreators(salesEvents, dispatch)
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalesBox);

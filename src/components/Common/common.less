@@ -15,3 +15,40 @@
     border-radius: @radius;
   }
 }
+
+.bubble {
+  .bubble-square {
+    margin-top: 8px;
+    padding: 5px 8px;
+    border: 2px solid @primary-gray;
+    background: white;
+
+    @radius: 6px;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+  }
+
+  .bubble-dash {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    &.bubble-dash-out {
+      bottom: 32px;
+      border-bottom: 10px solid;
+      border-left: 5px solid;
+      border-right: 5px solid;
+      border-color: transparent transparent @primary-gray transparent;
+    }
+
+    &.bubble-dash-in {
+      bottom: 30px;
+      border-bottom: 8px solid;
+      border-left: 4px solid;
+      border-right: 4px solid;
+      border-color: transparent transparent white transparent;
+    }
+  }
+}

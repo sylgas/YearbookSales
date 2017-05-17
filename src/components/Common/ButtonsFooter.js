@@ -1,9 +1,17 @@
 import React from 'react';
 import './common.less'
+import PropTypes from 'prop-types';
 
-export default ({leftButton, rightButton}) => (
+const ButtonsFooter = ({leftButton, rightButton}) => (
     <div className="buttons-footer text-right">
         <button className="btn footer-button">{leftButton}</button>
         <button className="btn footer-button">{rightButton}</button>
     </div>
 );
+
+ButtonsFooter.propTypes = {
+    leftButton: PropTypes.string.isRequired,
+    rightButton: PropTypes.string.isRequired
+};
+
+export default ButtonsFooter;

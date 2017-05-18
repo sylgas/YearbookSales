@@ -12,3 +12,10 @@ export function fetchSalesSuccess(sales) {
         payload: {sales: sales}
     }
 }
+
+export function fetchSalesError(error) {
+    return {
+        type: FETCH_SALES_SUCCESS,
+        payload: {error: error}
+    }
+}

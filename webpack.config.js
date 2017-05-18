@@ -5,7 +5,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: "./src/components/App/App.js",
+    entry: ["babel-polyfill","./src/components/App/App.js"],
     output: {filename: 'yearsales.js', path: path.join(__dirname, 'dist')},
     module: {
         rules: [
@@ -13,9 +13,10 @@ module.exports = {
             {test: /\.less/, loader: "style-loader!css-loader!less-loader"},
             {test: /\.js$/, loader: 'babel-loader',
                 include: path.resolve('src'),
+                exclude: /node_modules/,
                 query: {
                     presets: ['es2015', 'react']
-            }}
+                }}
         ]
     },
     plugins: [

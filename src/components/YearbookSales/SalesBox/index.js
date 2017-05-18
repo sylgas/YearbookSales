@@ -21,7 +21,7 @@ function formatDate(date) {
         return '';
     }
     return [
-        pad(date.getMonth(), 1),
+        pad(date.getMonth() +1, 1),
         pad(date.getDate(), 2),
         pad(date.getFullYear(), 4),
     ].join('/');

@@ -1,0 +1,38 @@
+@import "../../App/colors";
+
+.yearbook-progress-header {
+  position: relative;
+
+  .progress-bar-container {
+    display: block;
+    padding-right: 34px;
+    padding-top: 10px;
+
+    .progress-bar-background {
+      height: 10px;
+      background: @primary-gray;
+      position: relative;
+
+      .progress-bar {
+        position: absolute;
+        height: 100%;
+        background: @primary-green;
+      }
+
+    }
+
+  }
+
+  .progress-bar-trophy {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background: @primary-gray;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 2em;
+    color: @text-gray;
+  }
+}

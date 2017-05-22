@@ -1,0 +1,44 @@
+@import "../App/colors";
+
+.box {
+  margin: 10px;
+  border: 1px @primary-gray solid;
+  border-radius: 4px;
+  background-color: white;
+
+  .box-header {
+    h2 {
+      margin: 2px 0 0 0;
+      color: @primary-blue;
+      font-weight: bold;
+      float: left;
+      font-size: 20px;
+
+      small {
+        padding-left: 1em;
+      }
+    }
+
+    span {
+      margin-top: 5px;
+      a {
+        text-decoration: underline;
+        color: @primary-blue;
+      }
+    }
+
+    .box-header-section {
+      padding: 10px 20px;
+      border-bottom: 1px @primary-gray solid;
+    }
+  }
+
+  .box-content {
+    padding: 10px 20px;
+  }
+
+  .box-footer {
+    padding: 10px 20px;
+    border-top: 1px @primary-gray solid;
+  }
+}

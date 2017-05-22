@@ -17,7 +17,7 @@ class SalesBox extends React.Component {
 
     render() {
         return (
-            <div className="box">
+            <div className="box sales-box">
                 <div className="box-header">
                     <div className="box-header-section clearfix">
                         <h2>Yearbook Sales</h2>

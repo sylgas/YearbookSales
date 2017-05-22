@@ -1,20 +1,16 @@
-import 'babel-polyfill';
-import React from 'react';
-import {render} from 'react-dom';
-import './app.less';
-import SalesBox from "../YearbookSales/SalesBox/index";
-import configureStore from '../../store/configureStore'
+import "babel-polyfill";
+import React from "react";
+import {render} from "react-dom";
+import "./app.less";
+import configureStore from "../../store/configureStore";
 import Provider from "react-redux/src/components/Provider";
+import Dashboard from "../Dashboard/Dashboard";
 
 const store = configureStore();
 
 const App = () => (
     <Provider store={store}>
-        <div className="col-md-11">
-            <div className="col-md-4">
-                <SalesBox/>
-            </div>
-        </div>
+        <Dashboard/>
     </Provider>
 );
 

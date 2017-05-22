@@ -6,18 +6,24 @@ import PropType from "prop-types";
 
 class SalesBox extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            chartDataFetched: false
+        }
+    }
+
     componentDidMount() {
         this.props.actions.fetchSales();
+    }
+
+    componentWillReceiveProps() {
+        this.setState({chartDataFetched: true})
     }
 
     render() {
         return (
             <div className="box">
-                {!this.props.finalSales && (
-                    <div className="spinner">
-                        <i className="fa fa-spinner fa-spin fa-4x fa-fw"/>
-                    </div>)
-                }
                 <div className="box-header">
                     <div className="box-header-section clearfix">
                         <h2>Yearbook Sales</h2>
@@ -29,6 +35,11 @@ class SalesBox extends React.Component {
                     </div>
                 </div>
                 <div className="box-content">
+                    {!this.state.chartDataFetched && (
+                        <div className="spinner">
+                            <i className="fa fa-spinner fa-spin fa-4x fa-fw"/>
+                        </div>)
+                    }
                     <SalesBoxLegend campus={this.props.campus} online={this.props.online}/>
                     <SalesBoxChart campus={this.props.campus} online={this.props.online} max={this.props.max}/>
                 </div>

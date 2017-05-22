@@ -13,7 +13,10 @@ td {
   border: 1px @primary-gray solid;
   border-radius: 4px;
   background-color: white;
-  position: relative;
+
+  .box-content {
+    position: relative;
+  }
 
   .spinner {
     position: absolute;
@@ -21,14 +24,14 @@ td {
     width: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, 0.71);
+    background: rgba(255, 255, 255, 0.9);
     z-index: 999;
 
     i {
       position: absolute;
       color: @primary-blue;
-      top: calc(~'50% - 40px');
-      left: calc(~'50% - 40px');
+      top: calc(~'50% - 24px');
+      left: calc(~'50% - 30px');
     }
   }
 

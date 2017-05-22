@@ -29,7 +29,9 @@ function formatDate(date) {
 
 function pad(numberString, size) {
     let padded = numberString.toString();
-    while (padded.length < size) padded = '0'.repeat(size - padded.length) + padded;
+    if (padded.length < size) {
+        return '0'.repeat(size - padded.length) + padded;
+    }
     return padded;
 }
 

@@ -13,6 +13,11 @@ class SalesBox extends React.Component {
     render() {
         return (
             <div className="box">
+                {!this.props.finalSales && (
+                    <div className="spinner">
+                        <i className="fa fa-spinner fa-spin fa-4x fa-fw"/>
+                    </div>)
+                }
                 <div className="box-header">
                     <div className="box-header-section clearfix">
                         <h2>Yearbook Sales</h2>

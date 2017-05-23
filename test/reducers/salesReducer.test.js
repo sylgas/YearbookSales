@@ -1,6 +1,7 @@
 import salesReducer from "../../src/reducers/salesReducer";
 import initialState from "../../src/reducers/initialState";
 import {fetchSalesSuccess} from "../../src/actions/salesEvents";
+
 describe('REDUCER salesReducer.js', () => {
     const sales = {
         finalDate: new Date(2018, 5, 1),

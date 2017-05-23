@@ -3,12 +3,12 @@ import {FETCH_DEADLINES} from "../constants/actions";
 import {fetchDeadlines} from "../api/deadlinesApi";
 import {fetchDeadlinesError, fetchDeadlinesSuccess} from "../actions/deadlinesEvents";
 
-function* fetchDeadlinesSaga() {
+export function* fetchDeadlinesSaga() {
     try {
         const response = yield call(fetchDeadlines);
         yield put(fetchDeadlinesSuccess(response.deadlines));
     } catch (e) {
-        yield put(fetchDeadlinesError(e));
+        yield put(fetchDeadlinesError('Could not fetch deadlines'));
     }
 }
 

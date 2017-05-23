@@ -1,21 +1,18 @@
-import {FETCH_SALES, FETCH_SALES_SUCCESS} from "../constants/actions";
+import {FETCH_SALES, FETCH_SALES_ERROR, FETCH_SALES_SUCCESS} from "../constants/actions";
 
-export function fetchSales() {
-    return {
+export const fetchSales = () => ({
         type: FETCH_SALES
     }
-}
+);
 
-export function fetchSalesSuccess(sales) {
-    return {
+export const fetchSalesSuccess = (sales) => ({
         type: FETCH_SALES_SUCCESS,
-        payload: {sales: sales}
+        payload: {sales}
     }
-}
+);
 
-export function fetchSalesError(error) {
-    return {
-        type: FETCH_SALES_SUCCESS,
-        payload: {error: error}
+export const fetchSalesError = (error) => ({
+        type: FETCH_SALES_ERROR,
+        payload: {error}
     }
-}
+);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ButtonsFooter from "../../Common/ButtonsFooter";
 import SalesBoxLegend from "../SalesBoxLegend/SalesBoxLegend";
 import SalesBoxChart from "../SalesBoxChart/SalesBoxChart";
@@ -13,13 +13,15 @@ class SalesBox extends React.Component {
     render() {
         return (
             <div className="box">
-                <div className="box-header clearfix">
-                    <h2>Yearbook Sales</h2>
-                    <span className="pull-right"><b>Final Sales: </b><a>{this.props.finalSales}</a></span>
-                </div>
-                <div className="box-header clearfix">
-                    <span className="pull-left"><b>Personalization: </b>{this.props.personalization}</span>
-                    <span className="pull-right"><b>Exact Quantity: </b>{this.props.quantity}</span>
+                <div className="box-header">
+                    <div className="box-header-section clearfix">
+                        <h2>Yearbook Sales</h2>
+                        <span className="pull-right"><b>Final Sales: </b><a>{this.props.finalSales}</a></span>
+                    </div>
+                    <div className="box-header-section clearfix">
+                        <span className="pull-left"><b>Personalization: </b>{this.props.personalization}</span>
+                        <span className="pull-right"><b>Exact Quantity: </b>{this.props.quantity}</span>
+                    </div>
                 </div>
                 <div className="box-content">
                     <SalesBoxLegend campus={this.props.campus} online={this.props.online}/>

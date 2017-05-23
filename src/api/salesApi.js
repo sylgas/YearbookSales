@@ -15,7 +15,7 @@ export function fetchSales(){
     console.log('[API] fetchSales');
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(Object.assign({}, response.data));
+            resolve(response.data);
         }, 2000)
 
     });

@@ -9,5 +9,8 @@ export default {
     },
     loaders: {
         sales: true
+    },
+    deadlines: {
+        ordered: []
     }
 }

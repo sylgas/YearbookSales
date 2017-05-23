@@ -4,42 +4,33 @@ import PropTypes from "prop-types";
 
 class ProgressBox extends React.Component {
 
-    render() {
-        const deadlines = [
-            {
-                dueDate: new Date(2017, 9, 23),
-                submitted: 16,
-                pages: 20
-            },
-            {
-                dueDate: new Date(2017, 11, 13),
-                submitted: 0,
-                pages: 20
-            },
-            {
-                dueDate: new Date(2018, 2, 2),
-                submitted: 20,
-                pages: 20
-            }, {
-                dueDate: new Date(2018, 4, 1),
-                submitted: 0,
-                pages: 20
-            },
-        ];
+    componentDidMount() {
+        this.props.actions.fetchDeadlines();
+    }
 
-        const {submitted, pages} = deadlines.reduce((d1, d2) => {
+    calculateSubmittedPages() {
+        if (!this.props.deadlines.length) {
+            return {
+                submitted: 0,
+                pages: 0
+            }
+        }
+        return this.props.deadlines.reduce((d1, d2) => {
             return {
                 submitted: d1.submitted + d2.submitted,
                 pages: d1.pages + d2.pages
             }
         });
+    };
 
-        const progress = submitted / pages * 100;
+    render() {
+        const {submitted, pages} = this.calculateSubmittedPages();
+        const progress = pages ? submitted / pages * 100 : 0;
 
         return (
             <div className="box">
                 <div className="box-header box-section yearbook-progress-header">
-                    <div className="progress-bar-trophy">
+                    <div className={"progress-bar-trophy" + (progress === 100 ? " progress-bar-trophy-success" : "")}>
                         <span><i className="fa fa-trophy fa-fw"/></span>
                     </div>
                     <div className="clearfix">
@@ -54,11 +45,16 @@ class ProgressBox extends React.Component {
                     </div>
                 </div>
                 <div className="box-content">
-                    {deadlines.map((deadline, index) => (
+                    {!this.props.deadlines.length || this.props.deadlines.map((deadline, index) => (
                         <div key={index} className="box-section">
                             <DeadlineItem index={index} {...deadline}/>
                         </div>
                     ))}
+                    {!this.props.deadlines.length && (
+                        <div className="box-section">
+                            No deadlines scheduled
+                        </div>
+                    )}
                 </div>
             </div>
         )

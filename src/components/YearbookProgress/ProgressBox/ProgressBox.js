@@ -28,7 +28,7 @@ class ProgressBox extends React.Component {
 
         return (
             <div className="box">
-                <div className="box-header yearbook-progress-header">
+                <div className="box-header box-section yearbook-progress-header">
                     <div className="progress-bar-trophy">
                         <span><i className="fa fa-trophy fa-fw"/></span>
                     </div>
@@ -43,11 +43,13 @@ class ProgressBox extends React.Component {
                         </div>
                     </div>
                 </div>
-                {deadlines.map((deadline, index) => (
-                    <div key={index} className="box-header">
-                        <DeadlineItem {...deadline}/>
-                    </div>
-                ))}
+                <div className="box-content">
+                    {deadlines.map((deadline, index) => (
+                        <div key={index} className="box-section">
+                            <DeadlineItem {...deadline}/>
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }

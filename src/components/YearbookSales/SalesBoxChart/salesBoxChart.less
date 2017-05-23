@@ -1,0 +1,51 @@
+@import "../../App/colors";
+
+@vertical-line-width: 3px;
+
+.chart-content {
+  position: relative;
+  padding-bottom: 40px;
+  p {
+    margin: 0;
+  }
+  .chart {
+    padding: 0 10px;
+
+    .chart-vertical-line {
+      height: 40px;
+      width: @vertical-line-width;
+      background: @primary-gray;
+      display: inline-block;
+    }
+    .chart-box-container {
+      @vertical-lines-offset: @vertical-line-width * 2;
+      width: calc(~"100% - @{vertical-lines-offset}");
+      width: -moz-calc(~"100% - @{vertical-lines-offset}");
+      width: -webkit-calc(~"100% - @{vertical-lines-offset}");
+      width: -ms-calc(~"100% - @{vertical-lines-offset}");
+      width: -o-calc(~"100% - @{vertical-lines-offset}");
+
+      height: 30px;
+      border-bottom: 1px solid @primary-gray;
+      border-top: 1px solid @primary-gray;
+      display: inline-block;
+
+      .chart-box {
+        height: 28px;
+        display: inline-block;
+        margin-bottom: 5px;
+
+        &.chart-box-green {
+          background: @primary-green;
+        }
+        &.chart-box-yellow {
+          background: @primary-yellow;
+        }
+      }
+    }
+  }
+  .chart-bubble {
+    position: absolute;
+    top: 55px;
+  }
+}

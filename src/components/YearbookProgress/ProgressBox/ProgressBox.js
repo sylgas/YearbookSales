@@ -1,5 +1,6 @@
 import React from "react";
 import DeadlineItem from "../DeadlineItem/DeadlineItem";
+import PropTypes from "prop-types";
 
 class ProgressBox extends React.Component {
 
@@ -55,7 +56,7 @@ class ProgressBox extends React.Component {
                 <div className="box-content">
                     {deadlines.map((deadline, index) => (
                         <div key={index} className="box-section">
-                            <DeadlineItem {...deadline}/>
+                            <DeadlineItem index={index} {...deadline}/>
                         </div>
                     ))}
                 </div>
@@ -64,5 +65,9 @@ class ProgressBox extends React.Component {
     }
 
 }
+
+ProgressBox.propTypes = {
+    deadlines: PropTypes.array
+};
 
 export default ProgressBox;

@@ -9,7 +9,8 @@ import * as deadlinesEvents from "../../../actions/deadlinesEvents";
 
 function mapStateToProps(state) {
     return {
-        deadlines: state.deadlines.ordered
+        deadlines: state.deadlines.ordered,
+        totalSubmitted: state.deadlines.totalSubmitted
     };
 }
 

@@ -11,6 +11,7 @@ export default {
         sales: true
     },
     deadlines: {
+        totalSubmitted: 0,
         ordered: []
     }
 }

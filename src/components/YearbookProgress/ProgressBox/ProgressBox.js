@@ -4,28 +4,31 @@ import PropTypes from "prop-types";
 
 class ProgressBox extends React.Component {
 
+    static calculatePages(deadlines) {
+        if (!deadlines.length) {
+            return 0;
+        }
+        return deadlines.reduce((sum, d2) => sum + d2.pages, 0);
+    };
+
+    static calculateSubmittedPages(deadlines, totalSubmitted) {
+        if (!deadlines.length) {
+            return [];
+        }
+        const deadline = deadlines[0];
+        const submitted = deadline.pages < totalSubmitted ? deadline.pages : totalSubmitted;
+        return [submitted].concat(ProgressBox.calculateSubmittedPages(deadlines.slice(1), totalSubmitted - submitted));
+    }
+
     componentDidMount() {
         this.props.actions.fetchDeadlines();
     }
 
-    calculateSubmittedPages() {
-        if (!this.props.deadlines.length) {
-            return {
-                submitted: 0,
-                pages: 0
-            }
-        }
-        return this.props.deadlines.reduce((d1, d2) => {
-            return {
-                submitted: d1.submitted + d2.submitted,
-                pages: d1.pages + d2.pages
-            }
-        });
-    };
-
     render() {
-        const {submitted, pages} = this.calculateSubmittedPages();
-        const progress = pages ? submitted / pages * 100 : 0;
+        const {deadlines, totalSubmitted} = this.props;
+        const submittedPages = ProgressBox.calculateSubmittedPages(this.props.deadlines, totalSubmitted);
+        const pages = ProgressBox.calculatePages(deadlines);
+        const progress = Math.round(pages ? totalSubmitted / pages * 100 : 0);
 
         return (
             <div className="box">
@@ -45,12 +48,12 @@ class ProgressBox extends React.Component {
                     </div>
                 </div>
                 <div className="box-content">
-                    {!this.props.deadlines.length || this.props.deadlines.map((deadline, index) => (
+                    {!deadlines.length || deadlines.map((deadline, index) => (
                         <div key={index} className="box-section">
-                            <DeadlineItem index={index} {...deadline}/>
+                            <DeadlineItem index={index} submitted={submittedPages[index]} {...deadline}/>
                         </div>
                     ))}
-                    {!this.props.deadlines.length && (
+                    {!deadlines.length && (
                         <div className="box-section">
                             No deadlines scheduled
                         </div>

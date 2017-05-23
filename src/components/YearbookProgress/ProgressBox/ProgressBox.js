@@ -6,25 +6,34 @@ class ProgressBox extends React.Component {
     render() {
         const deadlines = [
             {
-                dueDate: new Date(2016, 9, 23),
+                dueDate: new Date(2017, 9, 23),
                 submitted: 16,
                 pages: 20
             },
             {
-                dueDate: new Date(2016, 11, 13),
+                dueDate: new Date(2017, 11, 13),
                 submitted: 0,
                 pages: 20
             },
             {
-                dueDate: new Date(2017, 2, 2),
-                submitted: 0,
+                dueDate: new Date(2018, 2, 2),
+                submitted: 20,
                 pages: 20
             }, {
-                dueDate: new Date(2017, 4, 1),
+                dueDate: new Date(2018, 4, 1),
                 submitted: 0,
                 pages: 20
             },
         ];
+
+        const {submitted, pages} = deadlines.reduce((d1, d2) => {
+            return {
+                submitted: d1.submitted + d2.submitted,
+                pages: d1.pages + d2.pages
+            }
+        });
+
+        const progress = submitted / pages * 100;
 
         return (
             <div className="box">
@@ -34,12 +43,12 @@ class ProgressBox extends React.Component {
                     </div>
                     <div className="clearfix">
                         <h2>Yearbook Progress
-                            <small>20% total completion</small>
+                            <small>{progress}% total completion</small>
                         </h2>
                     </div>
                     <div className="progress-bar-container">
                         <div className="progress-bar-background">
-                            <div className="progress-bar" style={{width: '20%'}}/>
+                            <div className="progress-bar" style={{width: (progress + '%')}}/>
                         </div>
                     </div>
                 </div>

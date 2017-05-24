@@ -5,6 +5,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devtool: 'source-map',
     entry: ["babel-polyfill","./src/components/App/App.js"],
     output: {filename: 'yearsales.js', path: path.join(__dirname, 'dist')},
     module: {

@@ -8,6 +8,7 @@ import {formatDate} from "../../../utils/date";
 
 function mapStateToProps(state) {
     return {
+        isLoading: state.loaders.sales,
         finalSales: formatDate(state.sales.finalDate),
         personalization: formatDate(state.sales.personalizationDate),
         quantity: formatDate(state.sales.exactQuantityDate),

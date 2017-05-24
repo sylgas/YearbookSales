@@ -6,5 +6,8 @@ export default {
         campus: 0,
         online: 0,
         max: 1500
+    },
+    loaders: {
+        sales: true
     }
 }

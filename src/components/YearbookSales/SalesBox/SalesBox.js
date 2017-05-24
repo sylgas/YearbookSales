@@ -3,11 +3,16 @@ import ButtonsFooter from "../../Common/ButtonsFooter";
 import SalesBoxLegend from "../SalesBoxLegend/SalesBoxLegend";
 import SalesBoxChart from "../SalesBoxChart/SalesBoxChart";
 import PropType from "prop-types";
+import Spinner from "../../Common/Spinner";
 
 class SalesBox extends React.Component {
 
     componentDidMount() {
         this.props.actions.fetchSales();
+    }
+
+    componentWillReceiveProps() {
+        this.setState({chartDataFetched: true})
     }
 
     render() {
@@ -24,6 +29,7 @@ class SalesBox extends React.Component {
                     </div>
                 </div>
                 <div className="box-content">
+                    <Spinner isLoading={this.props.isLoading}/>
                     <SalesBoxLegend campus={this.props.campus} online={this.props.online}/>
                     <SalesBoxChart campus={this.props.campus} online={this.props.online} max={this.props.max}/>
                 </div>

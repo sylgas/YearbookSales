@@ -12,12 +12,13 @@ describe('REDUCER deadlinesReducer;.js', () => {
             dueDate: new Date(2017, 9, 23),
             submitted: 16,
             pages: 20
-        }]
+        }],
+        totalSubmitted: 1
     };
 
     [undefined, null, {}, {ordered: []}].forEach((state) => {
         it("deadlineReducer should handle FETCH_DEADLINES_SUCCESS for state" + state, () => {
-            expect(deadlineReducer(state, fetchDeadlinesSuccess(deadlines.ordered))).toEqual(deadlines);
+            expect(deadlineReducer(state, fetchDeadlinesSuccess(deadlines))).toEqual(deadlines);
         })
     });
 

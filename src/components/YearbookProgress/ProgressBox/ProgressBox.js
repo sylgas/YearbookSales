@@ -4,30 +4,12 @@ import PropTypes from "prop-types";
 
 class ProgressBox extends React.Component {
 
-    static calculatePages(deadlines) {
-        if (!deadlines.length) {
-            return 0;
-        }
-        return deadlines.reduce((sum, d2) => sum + d2.pages, 0);
-    };
-
-    static calculateSubmittedPages(deadlines, totalSubmitted) {
-        if (!deadlines.length) {
-            return [];
-        }
-        const deadline = deadlines[0];
-        const submitted = deadline.pages < totalSubmitted ? deadline.pages : totalSubmitted;
-        return [submitted].concat(ProgressBox.calculateSubmittedPages(deadlines.slice(1), totalSubmitted - submitted));
-    }
-
     componentDidMount() {
         this.props.actions.fetchDeadlines();
     }
 
     render() {
-        const {deadlines, totalSubmitted} = this.props;
-        const submittedPages = ProgressBox.calculateSubmittedPages(this.props.deadlines, totalSubmitted);
-        const pages = ProgressBox.calculatePages(deadlines);
+        const {deadlines, totalSubmitted, pages} = this.props;
         const progress = Math.round(pages ? totalSubmitted / pages * 100 : 0);
 
         return (
@@ -50,7 +32,7 @@ class ProgressBox extends React.Component {
                 <div className="box-content">
                     {!deadlines.length || deadlines.map((deadline, index) => (
                         <div key={index} className="box-section">
-                            <DeadlineItem index={index} submitted={submittedPages[index]} {...deadline}/>
+                            <DeadlineItem index={index} {...deadline}/>
                         </div>
                     ))}
                     {!deadlines.length && (

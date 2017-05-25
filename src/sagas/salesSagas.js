@@ -16,5 +16,7 @@ export function* fetchSalesSaga() {
 }
 
 export default function* watchSalesSaga() {
-    yield takeLatest(FETCH_SALES, fetchSalesSaga)
+    yield* [
+        takeLatest(FETCH_SALES, fetchSalesSaga)
+    ];
 }

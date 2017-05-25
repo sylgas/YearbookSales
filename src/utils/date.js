@@ -1,18 +1,22 @@
-const pad = (numberString, size) => {
-    const padded = numberString.toString();
-    if (padded.length < size) {
-        return '0'.repeat(size - padded.length) + padded;
-    }
-    return padded;
-};
+import moment from "moment";
 
-export const formatDate = (date) => {
+const formatDateWithFormat = (date, format) => {
     if (!date) {
         return '';
     }
-    return [
-        pad(date.getMonth() + 1, 1),
-        pad(date.getDate(), 2),
-        pad(date.getFullYear(), 4),
-    ].join('/');
+    return moment(date).format(format);
+};
+
+export const formatDate = (date) => {
+    return formatDateWithFormat(date, 'l');
+};
+
+export const formatDateWithMonthNames = (date) => {
+    return formatDateWithFormat(date, 'LL');
+};
+
+export const daysSinceNow = (date) => {
+    const now = moment().startOf('day');
+    const days = moment(date).startOf('day').diff(now, 'days');
+    return days > 0 ? days : 0;
 };

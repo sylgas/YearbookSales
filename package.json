@@ -5,7 +5,7 @@
   "license": "",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "jest --coverage"
+    "test": "jest --no-cache --coverage"
   },
   "dependencies": {
     "babel-core": "^6.23.1",
@@ -19,6 +19,7 @@
     "jest": "^18.1.0",
     "less": "^2.5.3",
     "less-loader": "^2.0.0",
+    "moment": "^2.14.1",
     "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -26,6 +27,7 @@
     "react-sizeme": "^2.3.2",
     "redux": "^3.0.5",
     "redux-saga": "^0.15",
+    "reselect": "^3.0.1",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"

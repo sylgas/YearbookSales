@@ -1,5 +1,5 @@
 import React from "react";
-import "./common.less";
+import "./spinner.less";
 import PropTypes from "prop-types";
 
 const Spinner = ({isLoading}) => {

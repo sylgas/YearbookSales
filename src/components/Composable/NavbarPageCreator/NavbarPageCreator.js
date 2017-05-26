@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "react-router/es/Link";
 
-const NavbarCreator = (Component) => {
+const NavbarPageCreator = (Component) => {
     return () => (
         <div>
             <nav className="navbar navbar-default navbar-static-top" role="navigation">
@@ -22,4 +22,4 @@ const NavbarCreator = (Component) => {
     );
 };
 
-export default NavbarCreator;
+export default NavbarPageCreator;

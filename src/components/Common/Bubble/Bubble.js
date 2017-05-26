@@ -1,5 +1,5 @@
 import React from "react";
-import "./common.less";
+import "./bubble.less";
 import sizeMe from "react-sizeme";
 import PropTypes from "prop-types";
 

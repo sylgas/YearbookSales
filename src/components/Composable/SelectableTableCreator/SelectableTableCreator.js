@@ -5,15 +5,21 @@ const SelectableTableCreator = (Component) => (
         constructor(props) {
             super(props);
             this.handleTableCellSelected = this.handleTableCellSelected.bind(this);
+            this.state = {
+                selected: []
+            }
         }
 
         handleTableCellSelected([column, row]) {
-            console.log('Table cell selected: ' + column + ', ' + row)
+            const selected = [...this.state.selected];
+            selected[column] = row;
+            this.setState({selected});
         }
 
         render() {
             return (
-                <Component {...this.props} handleTableCellSelected={this.handleTableCellSelected}/>
+                <Component {...this.props} handleTableCellSelected={this.handleTableCellSelected}
+                           selected={this.state.selected}/>
             )
         }
     }

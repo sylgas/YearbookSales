@@ -2,10 +2,11 @@ import SelectableTableCell from "../../Common/SelectableTableCell/SelectableTabl
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-const DuplicateTableRow = ({row, duplicate, onTableCellClick}) => (
+const DuplicateTableRow = ({row, duplicate, onTableCellClick, selected}) => (
     <tr key={'key-' + row}>
         {Object.values(duplicate).map((value, column) => (
-            <SelectableTableCell key={column} position={[column, row]} onClick={onTableCellClick} value={value}/>
+            <SelectableTableCell key={column} position={[column, row]} onClick={onTableCellClick} value={value}
+                                 isSelected={selected && selected[column] === row}/>
         ))}
     </tr>
 );

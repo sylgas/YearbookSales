@@ -15,7 +15,9 @@ const NavbarCreator = (Component) => {
                     </ul>
                 </div>
             </nav>
-            <Component/>
+            <div className="container">
+                <Component/>
+            </div>
         </div>
     );
 };

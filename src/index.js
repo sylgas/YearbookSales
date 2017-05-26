@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import {hashHistory, IndexRoute, Route, Router} from "react-router";
 import App from "./components/App/App";
 import DashboardPage from "./components/DashboardPage/DashboardPage";
-import DuplicatesPage from "./components/DuplicatesPage/DuplicatesPage";
+import DuplicatesPage from "./components/DuplicatesPage";
 import NavbarCreator from "./composable/Navbar/Navbar";
 
 const store = configureStore();

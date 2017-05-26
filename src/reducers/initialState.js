@@ -13,5 +13,6 @@ export default {
     deadlines: {
         totalSubmitted: 0,
         ordered: []
-    }
+    },
+    duplicates: []
 }

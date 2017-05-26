@@ -1,11 +1,19 @@
 import React from "react";
 
-const DuplicatesPage = () => {
-    return (
-        <h2>
-            Duplicates
-        </h2>
-    );
-};
+class DuplicatesPage extends React.Component {
+
+    componentWillMount() {
+        this.props.actions.fetchDuplicates();
+    }
+
+    render() {
+        const {duplicates} = this.props;
+        return (
+            <h2>
+                {duplicates.length}
+            </h2>
+        );
+    }
+}
 
 export default DuplicatesPage;

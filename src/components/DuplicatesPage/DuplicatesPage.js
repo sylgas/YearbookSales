@@ -1,4 +1,5 @@
 import React from "react";
+import DuplicatesTable from "./DuplicatesTable";
 
 class DuplicatesPage extends React.Component {
 
@@ -7,13 +8,16 @@ class DuplicatesPage extends React.Component {
     }
 
     render() {
-        const {duplicates} = this.props;
+        const {duplicatesSets} = this.props;
+
         return (
-            <h2>
-                {duplicates.length}
-            </h2>
-        );
-    }
+            <div>
+                {duplicatesSets.map((duplicatesSet, index) => (
+                    <DuplicatesTable key={index} duplicates={duplicatesSet}/>
+                ))}
+            </div>
+        )
+    };
 }
 
 export default DuplicatesPage;

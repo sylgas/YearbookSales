@@ -1,9 +1,5 @@
 @import "colors";
 
-body {
-  background: #f1f1f1;
-}
-
 td {
   padding: 0 10px;
   h2 {
@@ -17,4 +13,25 @@ td {
 
 .pl-0 {
   padding-left: 0 ! important;
+}
+
+.ys-table {
+  font-size: 14px;
+  margin: 10px;
+  width: 100%;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .45);
+
+  td {
+    text-align: center;
+    background: white;
+    padding: 20px;
+  }
+
+  th {
+    text-align: center;
+    background: @charcoal-grey;
+    padding: 15px;
+    font-weight: 500;
+    color: @light-grey;
+  }
 }

@@ -1,7 +1,14 @@
 @import "../../App/colors";
 
 .selectable-table-cell {
+  border: solid 1px white;
+
   &.selected {
     background: @primary-blue;
+    color: white;
+  }
+
+  &.selectable:hover {
+    border-color: @light-grey;
   }
 }

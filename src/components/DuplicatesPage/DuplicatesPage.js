@@ -11,9 +11,9 @@ class DuplicatesPage extends React.Component {
         const {duplicatesSets} = this.props;
 
         return (
-            <div>
+            <div className="col-md-12">
                 {duplicatesSets.map((duplicatesSet, index) => (
-                    <DuplicatesTable key={index} duplicates={duplicatesSet}/>
+                    <DuplicatesTable key={"key-" + index} duplicates={duplicatesSet}/>
                 ))}
             </div>
         )

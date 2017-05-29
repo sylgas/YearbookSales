@@ -10,13 +10,27 @@ class SelectableTableCell extends React.Component {
     }
 
     onClick() {
-        this.props.onClick(this.props.position)
+        if (this.props.isEnabled) {
+            this.props.onClick(this.props.position)
+        }
+    }
+
+    componentDidUpdate() {
+        this.deselectCellIfDisabled();
+    }
+
+    deselectCellIfDisabled() {
+        if (!this.props.isEnabled && this.props.isSelected) {
+            const position = [this.props.position[0]];
+            this.props.onClick(position);
+        }
     }
 
     render() {
         const cellClassNames = classNames({
             'selectable-table-cell': true,
-            'selected': this.props.isSelected
+            'selected': this.props.isSelected,
+            'selectable': this.props.isEnabled && !this.props.isSelected,
         });
         return (
             <td className={cellClassNames} onClick={this.onClick}>{this.props.value}</td>
@@ -25,6 +39,7 @@ class SelectableTableCell extends React.Component {
 }
 
 SelectableTableCell.propTypes = {
+    isEnabled: PropTypes.bool,
     isSelected: PropTypes.bool,
     position: PropTypes.arrayOf(PropTypes.number),
     onClick: PropTypes.func,

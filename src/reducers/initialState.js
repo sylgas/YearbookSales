@@ -8,7 +8,8 @@ export default {
         max: 1500
     },
     loaders: {
-        sales: true
+        sales: true,
+        duplicates: true
     },
     deadlines: {
         totalSubmitted: 0,

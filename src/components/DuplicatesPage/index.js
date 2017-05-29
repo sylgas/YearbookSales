@@ -5,7 +5,8 @@ import connect from "react-redux/es/connect/connect";
 
 function mapStateToProps(state) {
     return {
-        duplicatesSets: state.duplicates
+        duplicatesSets: state.duplicates,
+        isLoading: state.loaders.duplicates
     };
 }
 

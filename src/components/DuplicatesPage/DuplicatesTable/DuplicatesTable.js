@@ -3,7 +3,7 @@ import DuplicateTableRow from "../DuplicateTableRow/DuplicateTableRow";
 import * as PropTypes from "prop-types";
 import TableHeader from "../../Common/TableHeader/TableHeader";
 import "./duplicatesTable.less";
-import PositiveNegativeButtons from "../../Common/PositiveNegativeButtons/PositiveNegativeButtons";
+import PositiveNegativeButtons from "../../Common/ButtonsBar/ButtonsBar";
 import {DUPLICATES_TABLE_HEADERS} from "../../../constants/duplicatesHeaders";
 
 const canBeMerged = (selected) => {
@@ -15,8 +15,11 @@ const canBeMerged = (selected) => {
     return true;
 };
 
-const DuplicatesTable = ({duplicates, selected, handleTableCellSelected}) => (
-    <div>
+const getDuplicateTitle = (duplicate) => (duplicate.firstName + ' ' + duplicate.lastName).toUpperCase();
+
+const DuplicatesTable = ({index, duplicates, selected, handleTableCellSelected}) => (
+    <div className="ys-duplicates-table-container">
+        <b className="secondary-text">DUPLICATE {index + 1} - {getDuplicateTitle(duplicates[0])}</b>
         <table className="ys-table ys-duplicates-table">
             <thead>
             <TableHeader headers={DUPLICATES_TABLE_HEADERS}/>
@@ -28,8 +31,8 @@ const DuplicatesTable = ({duplicates, selected, handleTableCellSelected}) => (
             ))}
             </tbody>
         </table>
-        <PositiveNegativeButtons isPositiveEnabled={canBeMerged(selected)} positiveLabel="Merge"
-                                 negativeLabel="Ignore"/>
+        <PositiveNegativeButtons positive={{disabled: !canBeMerged(selected), label: "Merge"}}
+                                 negative={{label: "Ignore"}}/>
     </div>
 );
 

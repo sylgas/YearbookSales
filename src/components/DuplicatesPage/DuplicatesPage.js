@@ -12,14 +12,12 @@ class DuplicatesPage extends React.Component {
         const {duplicatesSets} = this.props;
 
         return (
-            <div className="duplicates-page">
+            <div className="col-md-12 duplicates-page">
                 <Spinner isLoading={this.props.isLoading}/>
                 <h2>{duplicatesSets.length} Duplicates Found</h2>
-                <div className="col-md-12">
-                    {duplicatesSets.map((duplicatesSet, index) => (
-                        <DuplicatesTable key={"key-" + index} duplicates={duplicatesSet}/>
-                    ))}
-                </div>
+                {duplicatesSets.map((duplicatesSet, index) => (
+                    <DuplicatesTable key={"key-" + index} index={index} duplicates={duplicatesSet}/>
+                ))}
             </div>
         )
     };

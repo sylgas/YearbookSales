@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 import "./duplicatesTable.less";
 import PositiveNegativeButtons from "../../Common/ButtonsBar/ButtonsBar";
 import {EXTENDED_DUPLICATES_TABLE_HEADERS} from "../../../constants/duplicatesHeaders";
-import {areAllFieldsSelected} from "../../../utils/duplicates";
+import {areAllFieldsSelected, buildMergedItem, getDuplicatesIds} from "../../../utils/duplicates";
 import Table from "../../Common/Table/Table";
 import SelectableTableCreator from "../../Composable/SelectableTableCreator/SelectableTableCreator";
 
@@ -18,11 +18,20 @@ class DuplicatesTable extends React.Component {
 
     mergeDuplicates() {
         const {duplicates, selected, mergeDuplicates} = this.props;
-        mergeDuplicates(duplicates.id, duplicates.data, selected);
+        const mergedItem = buildMergedItem(duplicates.data, selected);
+        mergeDuplicates(duplicates.id, getDuplicatesIds(duplicates.data), mergedItem);
     }
 
     render() {
         const {duplicates, handleTableCellSelected, selected} = this.props;
+        const buttonsProps = {
+            positive: {
+                disabled: !areAllFieldsSelected(selected),
+                label: "Merge",
+                onClick: this.mergeDuplicates
+            },
+            negative: {label: "Ignore"}
+        };
         return (
             <div className="duplicates-table">
                 <Table isLoading={duplicates.isMerging} headers={EXTENDED_DUPLICATES_TABLE_HEADERS}>
@@ -31,12 +40,7 @@ class DuplicatesTable extends React.Component {
                                            onTableCellClick={handleTableCellSelected} selected={selected}/>
                     ))}
                 </Table>
-                <PositiveNegativeButtons positive={{
-                    disabled: !areAllFieldsSelected(selected),
-                    label: "Merge",
-                    onClick: this.mergeDuplicates
-                }}
-                                         negative={{label: "Ignore"}}/>
+                <PositiveNegativeButtons {...buttonsProps}/>
             </div>
         );
     }

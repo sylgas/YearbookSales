@@ -8,7 +8,6 @@ import {fetchDuplicates, mergeDuplicates} from "../api/duplicatesApi";
 import {call, put, takeLatest} from "redux-saga/effects";
 import {FETCH_DUPLICATES, MERGE_DUPLICATES} from "../constants/actions";
 import {enableDuplicatesLoader} from "../actions/loadersEvents";
-import {buildMergedItem, getDuplicatesIds} from "../utils/duplicates";
 
 function* fetchDuplicatesSaga() {
     try {
@@ -23,9 +22,8 @@ function* fetchDuplicatesSaga() {
 
 function* mergeDuplicatesSaga(action) {
     try {
-        const {id, duplicates, selectedFields} = action.payload;
-        const mergedItem = buildMergedItem(duplicates, selectedFields);
-        yield call(mergeDuplicates, getDuplicatesIds(duplicates), mergedItem);
+        const {id, duplicatesIds, mergedItem} = action.payload;
+        yield call(mergeDuplicates, duplicatesIds, mergedItem);
         yield put(mergeDuplicatesSuccess(id, mergedItem));
     } catch (e) {
         yield put(mergeDuplicatesError('Could not merge duplicates'));

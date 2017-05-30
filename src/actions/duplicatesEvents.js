@@ -21,9 +21,9 @@ export const fetchDuplicatesError = (error) => ({
     payload: {error}
 });
 
-export const mergeDuplicates = (id, duplicates, selectedFields) => ({
+export const mergeDuplicates = (id, duplicatesIds, mergedItem) => ({
     type: MERGE_DUPLICATES,
-    payload: {id, duplicates, selectedFields}
+    payload: {id, duplicatesIds, mergedItem}
 });
 
 export const mergeDuplicatesSuccess = (id, mergedItem) => ({

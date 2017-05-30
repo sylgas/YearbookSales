@@ -5,6 +5,9 @@ export const DUPLICATES_TABLE_HEADERS = [
     {value: 'grade', label: 'Grade'},
     {value: 'homeroom', label: 'Homeroom'},
     {value: 'email', label: 'Email'},
-    {value: 'address', label: 'Shipping Address'},
+    {value: 'address', label: 'Shipping Address'}
+];
+
+export const EXTENDED_DUPLICATES_TABLE_HEADERS = [...DUPLICATES_TABLE_HEADERS,
     {value: 'include', label: 'Include?'}
 ];

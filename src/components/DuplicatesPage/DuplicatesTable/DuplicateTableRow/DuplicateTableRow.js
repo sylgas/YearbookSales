@@ -1,8 +1,8 @@
-import SelectableTableCell from "../../Common/SelectableTableCell/SelectableTableCell";
+import SelectableTableCell from "../../../Common/SelectableTableCell/SelectableTableCell";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import "./duplicateTableRow.less";
-import RoundSwitch from "../../Common/RoundSwitch/RoundSwitch";
+import RoundSwitch from "../../../Common/RoundSwitch/RoundSwitch";
 import classNames from "classnames";
 
 class DuplicateTableRow extends React.Component {

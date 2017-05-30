@@ -3,11 +3,8 @@ import {bindActionCreators} from "redux";
 import duplicatesEvents from "../../actions/duplicatesEvents";
 import connect from "react-redux/es/connect/connect";
 
-function mapStateToProps(state) {
-    return {
-        duplicatesSets: state.duplicates,
-        isLoading: state.loaders.duplicates
-    };
+function mapStateToProps() {
+    return {};
 }
 
 function mapDispatchToProps(dispatch) {

@@ -23,10 +23,10 @@ function* fetchDuplicatesSaga() {
 
 function* mergeDuplicatesSaga(action) {
     try {
-        const {duplicates, selectedFields} = action.payload;
+        const {id, duplicates, selectedFields} = action.payload;
         const mergedItem = buildMergedItem(duplicates, selectedFields);
         yield call(mergeDuplicates, getDuplicatesIds(duplicates), mergedItem);
-        yield put(mergeDuplicatesSuccess(mergedItem.studentId));
+        yield put(mergeDuplicatesSuccess(id, mergedItem));
     } catch (e) {
         yield put(mergeDuplicatesError('Could not merge duplicates'));
     }

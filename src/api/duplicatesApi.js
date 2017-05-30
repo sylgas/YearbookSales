@@ -1,67 +1,74 @@
 const response = {
     data: {
         duplicates: [
-            [
                 {
-                    studentId: 'FRE567',
-                    firstName: 'John',
-                    lastName: 'Smith',
-                    grade: '7',
-                    homeroom: 'Science',
-                    email: 'johnsmith@gmail.com',
-                    address: '11134 TX Way, Irving TX 75080'
+                    id: 0,
+                    data: [
+                        {
+                            studentId: 'FRE567',
+                            firstName: 'John',
+                            lastName: 'Smith',
+                            grade: '7',
+                            homeroom: 'Science',
+                            email: 'johnsmith@gmail.com',
+                            address: '11134 TX Way, Irving TX 75080'
+                        },
+                        {
+                            studentId: 'EDD682',
+                            firstName: 'John',
+                            lastName: 'Smith',
+                            grade: '7',
+                            homeroom: 'Math',
+                            email: 'johnsmith@gmail.com',
+                            address: '11134 TX Way, Irving TX 75080'
+                        },
+                        {
+                            studentId: 'GGU554',
+                            firstName: 'John',
+                            lastName: 'Smith',
+                            grade: '9',
+                            homeroom: 'Science',
+                            email: 'johnsmith@gmail.com',
+                            address: '11134 TX Way, Irving TX 75080'
+                        }
+                    ]
                 },
                 {
-                    studentId: 'EDD682',
-                    firstName: 'John',
-                    lastName: 'Smith',
-                    grade: '7',
-                    homeroom: 'Math',
-                    email: 'johnsmith@gmail.com',
-                    address: '11134 TX Way, Irving TX 75080'
-                },
-                {
-                    studentId: 'GGU554',
-                    firstName: 'John',
-                    lastName: 'Smith',
-                    grade: '9',
-                    homeroom: 'Science',
-                    email: 'johnsmith@gmail.com',
-                    address: '11134 TX Way, Irving TX 75080'
+                    id: 1,
+                    data: [
+                        {
+                            studentId: 'FRE5676',
+                            firstName: 'Mary',
+                            lastName: 'Sue',
+                            grade: '7',
+                            homeroom: 'Science',
+                            email: 'marysue@gmail.com',
+                            address: '11134 TX Way, Irving TX 75080'
+                        },
+                        {
+                            studentId: 'EDD6826',
+                            firstName: 'Mary',
+                            lastName: 'Sue',
+                            grade: '7',
+                            homeroom: 'Science',
+                            email: 'marysue@gmail.com',
+                            address: '11134 TX Way, Irving TX 75080'
+                        },
+                        {
+                            studentId: 'GGU5549',
+                            firstName: 'John',
+                            lastName: 'Smith',
+                            grade: '7',
+                            homeroom: 'Science',
+                            email: 'marysue@gmail.com',
+                            address: '11134 TX Way, Irving TX 75080'
+                        }
+                    ]
                 }
-            ],
-            [
-                {
-                    studentId: 'FRE5676',
-                    firstName: 'Mary',
-                    lastName: 'Sue',
-                    grade: '7',
-                    homeroom: 'Science',
-                    email: 'marysue@gmail.com',
-                    address: '11134 TX Way, Irving TX 75080'
-                },
-                {
-                    studentId: 'EDD6826',
-                    firstName: 'Mary',
-                    lastName: 'Sue',
-                    grade: '7',
-                    homeroom: 'Science',
-                    email: 'marysue@gmail.com',
-                    address: '11134 TX Way, Irving TX 75080'
-                },
-                {
-                    studentId: 'GGU5549',
-                    firstName: 'John',
-                    lastName: 'Smith',
-                    grade: '7',
-                    homeroom: 'Science',
-                    email: 'marysue@gmail.com',
-                    address: '11134 TX Way, Irving TX 75080'
-                }
-            ]
         ]
     }
-};
+    }
+;
 
 export function fetchDuplicates() {
     console.log('[API] fetchDuplicates');

@@ -10,30 +10,30 @@ class DuplicateTableRow extends React.Component {
     constructor(props) {
         super(props);
         this.onIncludeChange = this.onIncludeChange.bind(this);
-        this.state = {included: true};
     }
 
     onIncludeChange() {
-        this.setState({included: !this.state.included});
+        this.props.onIncludeChange(this.props.row);
     }
 
     render() {
-        const {row, duplicate, selected, onTableCellClick} = this.props;
-        const included = this.state.included;
+        const {row, duplicate, selected, onTableCellClick, isIncluded} = this.props;
         return (
-            <tr className={classNames({"duplicate-table-row": true, "omitted": !included})}>
+            <tr className={classNames({"duplicate-table-row": true, "omitted": !isIncluded})}>
                 {Object.values(duplicate).map((value, column) => (
                     <SelectableTableCell key={"key-" + column} position={[column, row]} onClick={onTableCellClick}
                                          value={value} isSelected={selected && selected[column] === row}
-                                         isEnabled={this.state.included}/>
+                                         isEnabled={isIncluded}/>
                 ))}
-                <td><RoundSwitch onChange={this.onIncludeChange} isChecked={included}/></td>
+                <td><RoundSwitch onChange={this.onIncludeChange} isChecked={isIncluded}/></td>
             </tr>
         );
     }
 }
 
 DuplicateTableRow.propTypes = {
+    isIncluded: PropTypes.bool,
+    onIncludeChange: PropTypes.func,
     row: PropTypes.number,
     duplicate: PropTypes.object,
     onTableCellClick: PropTypes.func,

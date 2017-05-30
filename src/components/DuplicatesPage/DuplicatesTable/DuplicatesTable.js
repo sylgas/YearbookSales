@@ -14,12 +14,24 @@ class DuplicatesTable extends React.Component {
     constructor(props) {
         super(props);
         this.mergeDuplicates = this.mergeDuplicates.bind(this);
+        this.onIncludeChange = this.onIncludeChange.bind(this);
+
+        this.state = {
+            omitted: []
+        }
     }
 
     mergeDuplicates() {
         const {duplicates, selected, mergeDuplicates} = this.props;
         const mergedItem = buildMergedItem(duplicates.data, selected);
-        mergeDuplicates(duplicates.id, getDuplicatesIds(duplicates.data), mergedItem);
+        const usedIds = getDuplicatesIds(duplicates.data, this.state.omitted);
+        mergeDuplicates(duplicates.id, usedIds, mergedItem);
+    }
+
+    onIncludeChange(row) {
+        const omitted = [...this.state.omitted];
+        omitted[row] = !omitted[row];
+        this.setState({omitted});
     }
 
     render() {
@@ -37,7 +49,9 @@ class DuplicatesTable extends React.Component {
                 <Table isLoading={duplicates.isMerging} headers={EXTENDED_DUPLICATES_TABLE_HEADERS}>
                     {duplicates.data.map((duplicate, index) => (
                         <DuplicateTableRow key={duplicate.studentId} row={index} duplicate={duplicate}
-                                           onTableCellClick={handleTableCellSelected} selected={selected}/>
+                                           onTableCellClick={handleTableCellSelected} selected={selected}
+                                           onIncludeChange={this.onIncludeChange}
+                                           isIncluded={!this.state.omitted[index]}/>
                     ))}
                 </Table>
                 <PositiveNegativeButtons {...buttonsProps}/>

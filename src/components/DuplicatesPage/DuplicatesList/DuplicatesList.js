@@ -6,7 +6,7 @@ import MergedItem from "../MergedItem/MergedItem";
 import "./duplicatesList.less";
 
 const renderDuplicatesTable = (duplicates, actions) => (
-    <DuplicatesTable duplicates={duplicates} mergeDuplicates={actions.mergeDuplicates}/>
+    <DuplicatesTable duplicates={duplicates} actions={actions}/>
 );
 
 const renderMergedItem = (duplicates) => (

@@ -2,6 +2,9 @@ import {
     FETCH_DUPLICATES,
     FETCH_DUPLICATES_ERROR,
     FETCH_DUPLICATES_SUCCESS,
+    IGNORE_DUPLICATES,
+    IGNORE_DUPLICATES_ERROR,
+    IGNORE_DUPLICATES_SUCCESS,
     MERGE_DUPLICATES,
     MERGE_DUPLICATES_ERROR,
     MERGE_DUPLICATES_SUCCESS
@@ -36,4 +39,19 @@ export const mergeDuplicatesError = (error) => ({
     payload: {error}
 });
 
-export default {fetchDuplicates, fetchDuplicatesSuccess, fetchDuplicatesError, mergeDuplicates}
+export const ignoreDuplicates = (id, duplicatesIds) => ({
+    type: IGNORE_DUPLICATES,
+    payload: {id, duplicatesIds}
+});
+
+export const ignoreDuplicatesSuccess = (id) => ({
+    type: IGNORE_DUPLICATES_SUCCESS,
+    payload: {id}
+});
+
+export const ignoreDuplicatesError = (error) => ({
+    type: IGNORE_DUPLICATES_ERROR,
+    payload: {error}
+});
+
+export default {fetchDuplicates, mergeDuplicates, ignoreDuplicates}

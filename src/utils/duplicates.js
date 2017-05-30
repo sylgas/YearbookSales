@@ -2,9 +2,7 @@ import {DUPLICATES_TABLE_HEADERS} from "../constants/duplicatesHeaders";
 
 export const areDuplicatesMerged = (duplicates) => duplicates.data.length < 2;
 
-export const getDuplicatesIds = (duplicatesSet, omitted) => duplicatesSet
-    .filter((duplicate, index) => !omitted[index])
-    .map((duplicate) => duplicate.studentId);
+export const getDuplicatesIds = (duplicates) => duplicates.map((duplicate) => duplicate.studentId);
 
 export const buildMergedItem = (duplicatesSet, selected) => {
     const item = {};

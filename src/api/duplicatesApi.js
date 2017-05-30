@@ -89,3 +89,13 @@ export function mergeDuplicates(ids, mergedItem) {
 
     });
 }
+
+export function ignoreDuplicates(duplicatesIds) {
+    console.log('[API] ignoreDuplicates ' + duplicatesIds);
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('SUCCESS');
+        }, 2000)
+
+    });
+}

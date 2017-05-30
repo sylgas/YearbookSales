@@ -1,5 +1,11 @@
 import initialState from "./initialState";
-import {FETCH_DUPLICATES_SUCCESS, MERGE_DUPLICATES, MERGE_DUPLICATES_SUCCESS} from "../constants/actions";
+import {
+    FETCH_DUPLICATES_SUCCESS,
+    IGNORE_DUPLICATES,
+    IGNORE_DUPLICATES_SUCCESS,
+    MERGE_DUPLICATES,
+    MERGE_DUPLICATES_SUCCESS
+} from "../constants/actions";
 
 const duplicatesReducer = (state = initialState.duplicates, action) => {
     switch (action.type) {
@@ -8,17 +14,20 @@ const duplicatesReducer = (state = initialState.duplicates, action) => {
         case MERGE_DUPLICATES_SUCCESS:
             return state.map((duplicate) => {
                 if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {data: [action.payload.mergedItem], isMerging: false});
+                    return Object.assign({}, duplicate, {data: [action.payload.mergedItem], isLoading: false});
                 }
                 return duplicate;
             });
         case MERGE_DUPLICATES:
+        case IGNORE_DUPLICATES:
             return state.map((duplicate) => {
                 if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {isMerging: true});
+                    return Object.assign({}, duplicate, {isLoading: true});
                 }
                 return duplicate;
-            })
+            });
+        case IGNORE_DUPLICATES_SUCCESS:
+            return state.filter((duplicate) => duplicate.id !== action.payload.id);
     }
     return state;
 };

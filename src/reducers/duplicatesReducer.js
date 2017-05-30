@@ -19,10 +19,16 @@ const duplicatesReducer = (state = initialState.duplicates, action) => {
                 return duplicate;
             });
         case MERGE_DUPLICATES:
+            return state.map((duplicate) => {
+                if (duplicate.id === action.payload.id) {
+                    return Object.assign({}, duplicate, {isMerging: true});
+                }
+                return duplicate;
+            });
         case IGNORE_DUPLICATES:
             return state.map((duplicate) => {
                 if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {isLoading: true});
+                    return Object.assign({}, duplicate, {isIgnoring: true});
                 }
                 return duplicate;
             });

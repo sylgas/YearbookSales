@@ -53,9 +53,13 @@ class DuplicatesTable extends React.Component {
                 onClick: this.ignoreDuplicates
             }
         };
+        const loaderProps = {
+            isLoading: duplicates.isMerging || duplicates.isIgnoring,
+            loadingText: duplicates.isMerging ? "Merging..." : "Ignoring...."
+        };
         return (
             <div className="duplicates-table">
-                <Table isLoading={duplicates.isLoading} headers={EXTENDED_DUPLICATES_TABLE_HEADERS}>
+                <Table {...loaderProps} headers={EXTENDED_DUPLICATES_TABLE_HEADERS}>
                     {duplicates.data.map((duplicate, index) => (
                         <DuplicateTableRow key={duplicate.studentId} row={index} duplicate={duplicate}
                                            onTableCellClick={handleTableCellSelected} selected={selected}

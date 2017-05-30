@@ -17,7 +17,7 @@ const getDuplicateTitle = (duplicate) => (duplicate.firstName + ' ' + duplicate.
 
 const DuplicatesList = ({duplicatesList, actions}) => (
     <div className="col-md-12">
-        <h2>{duplicatesList.length} Duplicates Found</h2>
+        <h2>{duplicatesList.length ? duplicatesList.length + " Duplicates Found" : "No Duplicates Found"} </h2>
         {duplicatesList.map((duplicates, index) => (
             <div key={duplicates.id} className="duplicates-container">
                 <b className="secondary-text">DUPLICATE {index + 1} - {getDuplicateTitle(duplicates.data[0])}</b>

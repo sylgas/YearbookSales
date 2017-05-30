@@ -4,8 +4,8 @@ import "./loadableComponentCreator.less";
 const LoadableComponentCreator = (Component) => (props) => {
     if (props.isLoading) {
         return (
-            <div className="spinner">
-                <i className="fa fa-spinner fa-spin fa-4x fa-fw"/>
+            <div className="loader">
+                <h3>{props.loadingText}<i className="fa fa-spinner fa-spin fa-2x fa-fw"></i></h3>
             </div>
         );
     }

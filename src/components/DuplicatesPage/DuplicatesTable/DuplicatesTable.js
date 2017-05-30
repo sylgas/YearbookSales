@@ -2,11 +2,11 @@ import * as React from "react";
 import DuplicateTableRow from "./DuplicateTableRow/DuplicateTableRow";
 import * as PropTypes from "prop-types";
 import "./duplicatesTable.less";
-import PositiveNegativeButtons from "../../Common/ButtonsBar/ButtonsBar";
 import {EXTENDED_DUPLICATES_TABLE_HEADERS} from "../../../constants/duplicatesHeaders";
 import {areAllFieldsSelected, buildMergedItem, getDuplicatesIds} from "../../../utils/duplicates";
 import Table from "../../Common/Table/Table";
 import SelectableTableCreator from "../../Composable/SelectableTableCreator/SelectableTableCreator";
+import ButtonsBar from "../../Common/ButtonsBar/ButtonsBar";
 
 
 class DuplicatesTable extends React.Component {
@@ -67,7 +67,7 @@ class DuplicatesTable extends React.Component {
                                            isIncluded={!this.state.omitted[index]}/>
                     ))}
                 </Table>
-                <PositiveNegativeButtons {...buttonsProps}/>
+                <ButtonsBar {...buttonsProps}/>
             </div>
         );
     }

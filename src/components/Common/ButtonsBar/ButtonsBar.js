@@ -2,7 +2,7 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 import "./buttonsBar.less";
 
-const PositiveNegativeButtons = ({positive, negative}) => (
+const ButtonsBar = ({positive, negative}) => (
     <div className="buttons-bar">
         <button className="bar-button bar-button-positive" disabled={positive.disabled}
                 onClick={positive.onClick}>{positive.label}</button>
@@ -10,9 +10,9 @@ const PositiveNegativeButtons = ({positive, negative}) => (
     </div>
 );
 
-PositiveNegativeButtons.propTypes = {
+ButtonsBar.propTypes = {
     positive: PropTypes.object,
     negative: PropTypes.object
 };
 
-export default PositiveNegativeButtons;
+export default ButtonsBar;

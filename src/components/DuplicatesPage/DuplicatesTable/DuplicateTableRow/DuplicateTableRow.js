@@ -4,6 +4,7 @@ import * as PropTypes from "prop-types";
 import "./duplicateTableRow.less";
 import RoundSwitch from "../../../Common/RoundSwitch/RoundSwitch";
 import classNames from "classnames";
+import _ from "lodash";
 
 class DuplicateTableRow extends React.Component {
 
@@ -20,7 +21,7 @@ class DuplicateTableRow extends React.Component {
         const {row, duplicate, selected, onTableCellClick, isIncluded} = this.props;
         return (
             <tr className={classNames({"duplicate-table-row": true, "omitted": !isIncluded})}>
-                {Object.values(duplicate).map((value, column) => (
+                {_.values(duplicate).map((value, column) => (
                     <SelectableTableCell key={"key-" + column} position={[column, row]} onClick={onTableCellClick}
                                          value={value} isSelected={selected && selected[column] === row}
                                          isEnabled={isIncluded}/>

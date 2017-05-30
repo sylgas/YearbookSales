@@ -32,7 +32,7 @@ const response = {
             ],
             [
                 {
-                    studentId: 'FRE567',
+                    studentId: 'FRE5676',
                     firstName: 'Mary',
                     lastName: 'Sue',
                     grade: '7',
@@ -41,7 +41,7 @@ const response = {
                     address: '11134 TX Way, Irving TX 75080'
                 },
                 {
-                    studentId: 'EDD682',
+                    studentId: 'EDD6826',
                     firstName: 'Mary',
                     lastName: 'Sue',
                     grade: '7',
@@ -50,7 +50,7 @@ const response = {
                     address: '11134 TX Way, Irving TX 75080'
                 },
                 {
-                    studentId: 'GGU554',
+                    studentId: 'GGU5549',
                     firstName: 'John',
                     lastName: 'Smith',
                     grade: '7',
@@ -68,6 +68,16 @@ export function fetchDuplicates() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(response.data);
+        }, 2000)
+
+    });
+}
+
+export function mergeDuplicates(ids, mergedItem) {
+    console.log('[API] mergeDuplicates ' + mergedItem.studentId);
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('SUCCESS');
         }, 2000)
 
     });

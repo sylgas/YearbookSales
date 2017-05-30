@@ -11,7 +11,7 @@ import {call, put, takeEvery, takeLatest} from "redux-saga/effects";
 import {FETCH_DUPLICATES, IGNORE_DUPLICATES, MERGE_DUPLICATES} from "../constants/actions";
 import {enableDuplicatesLoader} from "../actions/loadersEvents";
 
-function* fetchDuplicatesSaga() {
+export function* fetchDuplicatesSaga() {
     try {
         const response = yield call(fetchDuplicates);
         yield put(fetchDuplicatesSuccess(response.duplicates));
@@ -22,7 +22,7 @@ function* fetchDuplicatesSaga() {
     }
 }
 
-function* mergeDuplicatesSaga(action) {
+export function* mergeDuplicatesSaga(action) {
     try {
         const {id, duplicatesIds, mergedItem} = action.payload;
         yield call(mergeDuplicates, duplicatesIds, mergedItem);
@@ -32,13 +32,13 @@ function* mergeDuplicatesSaga(action) {
     }
 }
 
-function* ignoreDuplicatesSaga(action) {
+export function* ignoreDuplicatesSaga(action) {
     try {
         const {id, duplicatesIds} = action.payload;
         yield call(ignoreDuplicates, duplicatesIds);
         yield put(ignoreDuplicatesSuccess(id));
     } catch (e) {
-        yield put(ignoreDuplicatesError('Could not merge duplicates'));
+        yield put(ignoreDuplicatesError('Could not ignore duplicates'));
     }
 }
 

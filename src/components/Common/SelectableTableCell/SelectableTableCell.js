@@ -1,19 +1,23 @@
-import * as PropTypes from "prop-types";
+import {any, arrayOf, bool, func, number} from "prop-types";
 import * as React from "react";
 import "./selectableTableCell.less";
 import classNames from "classnames";
 
-class SelectableTableCell extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onClick = this.onClick.bind(this);
-    }
+class SelectableTableCell extends React.PureComponent {
 
-    onClick() {
-        if (this.props.isEnabled) {
-            this.props.onClick(this.props.position)
-        }
-    }
+    static propTypes = {
+        position: arrayOf(number).isRequired,
+        onClick: func.isRequired,
+        isEnabled: bool,
+        isSelected: bool,
+        value: any
+    };
+
+    static defaultProps = {
+        isEnabled: true,
+        isSelected: false,
+        value: ''
+    };
 
     componentDidUpdate() {
         this.deselectCellIfDisabled();
@@ -26,6 +30,12 @@ class SelectableTableCell extends React.Component {
         }
     }
 
+    handleClick = () => {
+        if (this.props.isEnabled) {
+            this.props.onClick(this.props.position)
+        }
+    };
+
     render() {
         const cellClassNames = classNames({
             'selectable-table-cell': true,
@@ -33,17 +43,9 @@ class SelectableTableCell extends React.Component {
             'selectable': this.props.isEnabled && !this.props.isSelected,
         });
         return (
-            <td className={cellClassNames} onClick={this.onClick}>{this.props.value}</td>
+            <td className={cellClassNames} onClick={this.handleClick}>{this.props.value}</td>
         );
     }
 }
-
-SelectableTableCell.propTypes = {
-    isEnabled: PropTypes.bool,
-    isSelected: PropTypes.bool,
-    position: PropTypes.arrayOf(PropTypes.number),
-    onClick: PropTypes.func,
-    value: PropTypes.any
-};
 
 export default SelectableTableCell;

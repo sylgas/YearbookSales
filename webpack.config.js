@@ -10,14 +10,16 @@ module.exports = {
     output: {filename: 'yearsales.js', path: path.join(__dirname, 'dist')},
     module: {
         rules: [
-            {test: /\.css$/, loader: 'style-loader!css-loader'},
-            {test: /\.less/, loader: "style-loader!css-loader!less-loader"},
+            {test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'},
+            {test: /\.less/, loader: "style-loader!css-loader!postcss-loader!less-loader"},
             {test: /\.js$/, loader: 'babel-loader',
                 include: path.resolve('src'),
                 exclude: /node_modules/,
                 query: {
-                    presets: ['es2015', 'react']
-                }}
+                    presets: ['es2015', 'react'],
+                    plugins: ['transform-class-properties']
+                },
+            }
         ]
     },
     plugins: [

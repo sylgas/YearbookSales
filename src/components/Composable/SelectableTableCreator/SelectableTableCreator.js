@@ -4,17 +4,16 @@ const SelectableTableCreator = (Component) => (
     class SortableTable extends React.Component {
         constructor(props) {
             super(props);
-            this.handleTableCellSelected = this.handleTableCellSelected.bind(this);
             this.state = {
                 selected: []
             }
         }
 
-        handleTableCellSelected([column, row]) {
+        handleTableCellSelected = ([column, row]) => {
             const selected = [...this.state.selected];
             selected[column] = row;
             this.setState({selected});
-        }
+        };
 
         render() {
             return (

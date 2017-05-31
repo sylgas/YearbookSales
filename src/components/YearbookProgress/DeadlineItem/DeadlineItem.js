@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./deadlineItem.less";
 import {daysSinceNow, formatDateWithMonthNames} from "../../../utils/date";
-import PropTypes from "prop-types";
+import {instanceOf, number} from "prop-types";
 
 const DeadlineItem = ({index, dueDate, submitted, pages}) => {
     const days = daysSinceNow(dueDate);
@@ -21,10 +21,10 @@ const DeadlineItem = ({index, dueDate, submitted, pages}) => {
 };
 
 DeadlineItem.propTypes = {
-    index: PropTypes.number.isRequired,
-    dueDate: PropTypes.instanceOf(Date).isRequired,
-    submitted: PropTypes.number.isRequired,
-    pages: PropTypes.number.isRequired
+    index: number.isRequired,
+    dueDate: instanceOf(Date).isRequired,
+    submitted: number.isRequired,
+    pages: number.isRequired
 };
 
 export default DeadlineItem;

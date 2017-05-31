@@ -1,11 +1,4 @@
-import {
-    fetchDuplicatesError,
-    fetchDuplicatesSuccess,
-    ignoreDuplicatesError,
-    ignoreDuplicatesSuccess,
-    mergeDuplicatesError,
-    mergeDuplicatesSuccess
-} from "../actions/duplicatesEvents";
+import * as duplicatesEvents from "../actions/duplicatesEvents";
 import {fetchDuplicates, ignoreDuplicates, mergeDuplicates} from "../api/duplicatesApi";
 import {call, put, takeEvery, takeLatest} from "redux-saga/effects";
 import {FETCH_DUPLICATES, IGNORE_DUPLICATES, MERGE_DUPLICATES} from "../constants/actions";
@@ -13,11 +6,12 @@ import {enableDuplicatesLoader} from "../actions/loadersEvents";
 
 export function* fetchDuplicatesSaga() {
     try {
+        yield put(enableDuplicatesLoader(true));
         const response = yield call(fetchDuplicates);
-        yield put(fetchDuplicatesSuccess(response.duplicates));
+        yield put(duplicatesEvents.fetchDuplicatesSuccess(response.duplicates));
         yield put(enableDuplicatesLoader(false));
     } catch (e) {
-        yield put(fetchDuplicatesError('Could not fetch duplicates'));
+        yield put(duplicatesEvents.fetchDuplicatesError('Could not fetch duplicates'));
         yield put(enableDuplicatesLoader(false));
     }
 }
@@ -26,9 +20,9 @@ export function* mergeDuplicatesSaga(action) {
     try {
         const {id, duplicatesIds, mergedItem} = action.payload;
         yield call(mergeDuplicates, duplicatesIds, mergedItem);
-        yield put(mergeDuplicatesSuccess(id, mergedItem));
+        yield put(duplicatesEvents.mergeDuplicatesSuccess(id, mergedItem));
     } catch (e) {
-        yield put(mergeDuplicatesError('Could not merge duplicates'));
+        yield put(duplicatesEvents.mergeDuplicatesError('Could not merge duplicates'));
     }
 }
 
@@ -36,9 +30,9 @@ export function* ignoreDuplicatesSaga(action) {
     try {
         const {id, duplicatesIds} = action.payload;
         yield call(ignoreDuplicates, duplicatesIds);
-        yield put(ignoreDuplicatesSuccess(id));
+        yield put(duplicatesEvents.ignoreDuplicatesSuccess(id));
     } catch (e) {
-        yield put(ignoreDuplicatesError('Could not ignore duplicates'));
+        yield put(duplicatesEvents.ignoreDuplicatesError('Could not ignore duplicates'));
     }
 }
 

@@ -1,39 +1,34 @@
 import initialState from "./initialState";
-import {
-    FETCH_DUPLICATES_SUCCESS,
-    IGNORE_DUPLICATES,
-    IGNORE_DUPLICATES_SUCCESS,
-    MERGE_DUPLICATES,
-    MERGE_DUPLICATES_SUCCESS
-} from "../constants/actions";
+import * as actions from "../constants/actions";
+import {filter, map} from "lodash";
 
 const duplicatesReducer = (state = initialState.duplicates, action) => {
     switch (action.type) {
-        case FETCH_DUPLICATES_SUCCESS:
+        case actions.FETCH_DUPLICATES_SUCCESS:
             return action.payload.duplicates;
-        case MERGE_DUPLICATES:
-            return state.map((duplicate) => {
+        case actions.MERGE_DUPLICATES:
+            return map(state, (duplicate) => {
                 if (duplicate.id === action.payload.id) {
                     return Object.assign({}, duplicate, {isMerging: true});
                 }
                 return duplicate;
             });
-        case MERGE_DUPLICATES_SUCCESS:
-            return state.map((duplicate) => {
+        case actions.MERGE_DUPLICATES_SUCCESS:
+            return map(state, (duplicate) => {
                 if (duplicate.id === action.payload.id) {
                     return Object.assign({}, duplicate, {data: [action.payload.mergedItem], isMerging: false});
                 }
                 return duplicate;
             });
-        case IGNORE_DUPLICATES:
-            return state.map((duplicate) => {
+        case actions.IGNORE_DUPLICATES:
+            return map(state, (duplicate) => {
                 if (duplicate.id === action.payload.id) {
                     return Object.assign({}, duplicate, {isIgnoring: true});
                 }
                 return duplicate;
             });
-        case IGNORE_DUPLICATES_SUCCESS:
-            return state.filter((duplicate) => duplicate.id !== action.payload.id);
+        case actions.IGNORE_DUPLICATES_SUCCESS:
+            return filter(state, (duplicate) => duplicate.id !== action.payload.id);
     }
     return state;
 };

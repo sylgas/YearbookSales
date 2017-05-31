@@ -1,17 +1,18 @@
 import React from "react";
 import DuplicatesList from "./DuplicatesList";
+import NavbarPage from "../Common/NavbarPage/NavbarPage";
 
 class DuplicatesPage extends React.Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.actions.fetchDuplicates();
     }
 
     render() {
         return (
-            <div className="duplicates-page">
+            <NavbarPage>
                 <DuplicatesList/>
-            </div>
+            </NavbarPage>
         )
     };
 }

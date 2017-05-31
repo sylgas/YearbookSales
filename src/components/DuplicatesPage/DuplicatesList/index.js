@@ -3,6 +3,7 @@ import duplicatesEvents from "../../../actions/duplicatesEvents";
 import DuplicatesList from "./DuplicatesList";
 import LoadableComponentCreator from "../../Composable/LoadableComponentCreator/LoadableComponentCreator";
 import connect from "react-redux/es/connect/connect";
+import "./duplicatesList.less";
 
 function mapStateToProps(state) {
     return {

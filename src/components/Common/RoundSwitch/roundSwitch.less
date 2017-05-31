@@ -1,6 +1,7 @@
 @import "../../App/colors";
 
 .round-switch {
+  display: flex;
   position: relative;
   display: inline-block;
   width: 35px;
@@ -16,9 +17,6 @@
     bottom: 0;
     background-color: @warm-grey;
     border-radius: 100px;
-    -webkit-transition: .4s;
-    -moz-transition: .4s;
-    -o-transition: .4s;
     transition: .4s;
 
     &:before {
@@ -30,9 +28,6 @@
       left: 1px;
       background-color: white;
       border-radius: 100px;
-      -webkit-transition: .4s;
-      -moz-transition: .4s;
-      -o-transition: .4s;
       transition: .4s;
     }
   }
@@ -46,10 +41,6 @@
 
     &:checked + .round-slider:before {
       transform: translateX(19px);
-      -webkit-transform: translateX(19px);
-      -ms-transform: translateX(19px);
-      -moz-transform: translateX(19px);
-      -o-transform: translateX(19px);
     }
   }
 }

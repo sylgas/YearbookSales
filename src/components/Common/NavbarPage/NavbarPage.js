@@ -1,8 +1,9 @@
 import * as React from "react";
 import Link from "react-router/es/Link";
+import {element} from "prop-types";
 
-const NavbarPageCreator = (Component) => {
-    return () => (
+function NavbarPage({children}) {
+    return (
         <div>
             <nav className="navbar navbar-default navbar-static-top" role="navigation">
                 <div className="navbar-header">
@@ -16,10 +17,14 @@ const NavbarPageCreator = (Component) => {
                 </div>
             </nav>
             <div className="container">
-                <Component/>
+                {children}
             </div>
         </div>
     );
+}
+
+NavbarPage.propTypes = {
+    children: element.isRequired
 };
 
-export default NavbarPageCreator;
+export default NavbarPage;

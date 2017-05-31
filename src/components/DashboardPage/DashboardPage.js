@@ -2,16 +2,19 @@ import * as React from "react";
 import "./dashboardPage.less";
 import SalesBox from "../YearbookSales/SalesBox";
 import ProgressBox from "../YearbookProgress/ProgressBox";
+import NavbarPage from "../Common/NavbarPage/NavbarPage";
 
-const DashboardPage = () => {
+function DashboardPage() {
     return (
-        <div className="col-md-8">
-            <ProgressBox/>
-            <div className="col-md-7 pl-0">
-                <SalesBox/>
+        <NavbarPage>
+            <div className="col-md-8">
+                <ProgressBox/>
+                <div className="col-md-7 pl-0">
+                    <SalesBox/>
+                </div>
             </div>
-        </div>
+        </NavbarPage>
     );
-};
+}
 
 export default DashboardPage;

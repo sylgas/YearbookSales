@@ -8,6 +8,7 @@
     "test": "jest --no-cache --coverage"
   },
   "dependencies": {
+    "autoprefixer": "^7.1.1",
     "babel-core": "^6.23.1",
     "babel-jest": "16.0.0",
     "babel-loader": "^6.0.0",
@@ -20,11 +21,15 @@
     "jest": "^18.1.0",
     "less": "^2.5.3",
     "less-loader": "^2.0.0",
+    "lodash": "^4.10.0",
     "moment": "^2.14.1",
+    "postcss-loader": "^2.0.5",
     "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^5.0.2",
+    "react-router": "^3.0.2",
+    "react-router-redux": "^4.0.8",
     "react-sizeme": "^2.3.2",
     "redux": "^3.0.5",
     "redux-saga": "^0.15",
@@ -32,9 +37,7 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0",
-    "react-router": "^3.0.2",
-    "react-router-redux": "^4.0.8",
-    "lodash": "^4.10.0"
+    "babel-plugin-transform-class-properties": "^6.24.1"
   },
   "jest": {
     "testPathDirs": [

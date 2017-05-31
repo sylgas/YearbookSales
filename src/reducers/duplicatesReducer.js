@@ -6,6 +6,7 @@ const duplicatesReducer = (state = initialState.duplicates, action) => {
     switch (action.type) {
         case actions.FETCH_DUPLICATES_SUCCESS:
             return action.payload.duplicates;
+
         case actions.MERGE_DUPLICATES:
             return map(state, (duplicate) => {
                 if (duplicate.id === action.payload.id) {
@@ -20,6 +21,14 @@ const duplicatesReducer = (state = initialState.duplicates, action) => {
                 }
                 return duplicate;
             });
+        case actions.MERGE_DUPLICATES_ERROR:
+            return map(state, (duplicate) => {
+                if (duplicate.id === action.payload.id) {
+                    return Object.assign({}, duplicate, {isMerging: false});
+                }
+                return duplicate;
+            });
+
         case actions.IGNORE_DUPLICATES:
             return map(state, (duplicate) => {
                 if (duplicate.id === action.payload.id) {
@@ -29,6 +38,13 @@ const duplicatesReducer = (state = initialState.duplicates, action) => {
             });
         case actions.IGNORE_DUPLICATES_SUCCESS:
             return filter(state, (duplicate) => duplicate.id !== action.payload.id);
+        case actions.IGNORE_DUPLICATES_ERROR:
+            return map(state, (duplicate) => {
+                if (duplicate.id === action.payload.id) {
+                    return Object.assign({}, duplicate, {isIgnoring: false});
+                }
+                return duplicate;
+            });
     }
     return state;
 };

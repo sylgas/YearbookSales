@@ -24,9 +24,9 @@ export const mergeDuplicatesSuccess = (id, mergedItem) => ({
     payload: {id, mergedItem}
 });
 
-export const mergeDuplicatesError = (error) => ({
+export const mergeDuplicatesError = (id, error) => ({
     type: actions.MERGE_DUPLICATES_ERROR,
-    payload: {error}
+    payload: {id, error}
 });
 
 export const ignoreDuplicates = (id, duplicatesIds) => ({
@@ -39,9 +39,9 @@ export const ignoreDuplicatesSuccess = (id) => ({
     payload: {id}
 });
 
-export const ignoreDuplicatesError = (error) => ({
+export const ignoreDuplicatesError = (id, error) => ({
     type: actions.IGNORE_DUPLICATES_ERROR,
-    payload: {error}
+    payload: {id, error}
 });
 
 export default {fetchDuplicates, mergeDuplicates, ignoreDuplicates}

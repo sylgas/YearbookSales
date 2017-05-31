@@ -23,6 +23,9 @@ describe('SAGA duplicatesSaga.js', () => {
         };
 
         const fetchDeadlinesGenerator = fetchDuplicatesSaga();
+        it('fetchDuplicatesSaga should dispatch ENABLE_DUPLICATES_LOADER with true value', () => {
+            expect(fetchDeadlinesGenerator.next(response).value).toEqual(put(enableDuplicatesLoader(true)));
+        });
         it('fetchDuplicatesSaga should call API', () => {
             expect(fetchDeadlinesGenerator.next().value).toEqual(call(fetchDuplicates));
         });
@@ -59,7 +62,7 @@ describe('SAGA duplicatesSaga.js', () => {
                 action.payload.mergedItem)));
         });
         it('mergeDuplicatesSaga should dispatch FETCH_DUPLICATES_ERROR on error', () => {
-            expect(mergeDuplicatesGenerator.throw('error').value).toEqual(put(mergeDuplicatesError('Could not merge duplicates')));
+            expect(mergeDuplicatesGenerator.throw('error').value).toEqual(put(mergeDuplicatesError(action.payload.id, 'Could not merge duplicates')));
         });
     });
 
@@ -79,7 +82,7 @@ describe('SAGA duplicatesSaga.js', () => {
             expect(ignoreDuplicatesSagaGenerator.next({}).value).toEqual(put(ignoreDuplicatesSuccess(action.payload.id)));
         });
         it('ignoreDuplicatesSaga should dispatch FETCH_DUPLICATES_ERROR on error', () => {
-            expect(ignoreDuplicatesSagaGenerator.throw('error').value).toEqual(put(ignoreDuplicatesError('Could not ignore duplicates')));
+            expect(ignoreDuplicatesSagaGenerator.throw('error').value).toEqual(put(ignoreDuplicatesError(action.payload.id, 'Could not ignore duplicates')));
         });
     });
 

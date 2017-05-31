@@ -17,22 +17,22 @@ export function* fetchDuplicatesSaga() {
 }
 
 export function* mergeDuplicatesSaga(action) {
+    const {id, duplicatesIds, mergedItem} = action.payload;
     try {
-        const {id, duplicatesIds, mergedItem} = action.payload;
         yield call(mergeDuplicates, duplicatesIds, mergedItem);
         yield put(duplicatesEvents.mergeDuplicatesSuccess(id, mergedItem));
     } catch (e) {
-        yield put(duplicatesEvents.mergeDuplicatesError('Could not merge duplicates'));
+        yield put(duplicatesEvents.mergeDuplicatesError(id, 'Could not merge duplicates'));
     }
 }
 
 export function* ignoreDuplicatesSaga(action) {
+    const {id, duplicatesIds} = action.payload;
     try {
-        const {id, duplicatesIds} = action.payload;
         yield call(ignoreDuplicates, duplicatesIds);
         yield put(duplicatesEvents.ignoreDuplicatesSuccess(id));
     } catch (e) {
-        yield put(duplicatesEvents.ignoreDuplicatesError('Could not ignore duplicates'));
+        yield put(duplicatesEvents.ignoreDuplicatesError(id, 'Could not ignore duplicates'));
     }
 }
 

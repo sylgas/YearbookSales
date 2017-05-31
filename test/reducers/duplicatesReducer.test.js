@@ -18,6 +18,13 @@ describe('REDUCER duplicatesReducer;.js', () => {
         })
     });
 
+    it("duplicatesReducer should not handle FETCH_DUPLICATES", () => {
+        expect(duplicatesReducer(initialState.duplicates, events.fetchDuplicates())).toEqual(initialState.duplicates);
+    });
+
+    it("duplicatesReducer should not handle FETCH_DUPLICATES_ERROR", () => {
+        expect(duplicatesReducer(initialState.duplicates, events.fetchDuplicatesError('error'))).toEqual(initialState.duplicates);
+    });
 
     it("duplicatesReducer should handle MERGE_DUPLICATES", () => {
         expect(duplicatesReducer(duplicates, events.mergeDuplicates(1, [0], 'mergedItem'))).toEqual([
@@ -33,6 +40,13 @@ describe('REDUCER duplicatesReducer;.js', () => {
         ]);
     });
 
+    it("duplicatesReducer should handle MERGE_DUPLICATES_ERROR", () => {
+        expect(duplicatesReducer(duplicates, events.mergeDuplicatesError(1, 'error'))).toEqual([
+            {id: 1, isMerging: false},
+            {id: 2}
+        ]);
+    });
+
     it("duplicatesReducer should handle IGNORE_DUPLICATES", () => {
         expect(duplicatesReducer(duplicates, events.ignoreDuplicates(1, [0]))).toEqual([
             {id: 1, isIgnoring: true},
@@ -42,5 +56,12 @@ describe('REDUCER duplicatesReducer;.js', () => {
 
     it("duplicatesReducer should handle IGNORE_DUPLICATES_SUCCESS", () => {
         expect(duplicatesReducer(duplicates, events.ignoreDuplicatesSuccess(1))).toEqual([{id: 2}]);
+    });
+
+    it("duplicatesReducer should handle IGNORE_DUPLICATES_ERROR", () => {
+        expect(duplicatesReducer(duplicates, events.ignoreDuplicatesError(1, 'error'))).toEqual([
+            {id: 1, isIgnoring: false},
+            {id: 2}
+        ]);
     });
 });

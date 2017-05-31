@@ -8,43 +8,23 @@ const duplicatesReducer = (state = initialState.duplicates, action) => {
             return action.payload.duplicates;
 
         case actions.MERGE_DUPLICATES:
-            return map(state, (duplicate) => {
-                if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {isMerging: true});
-                }
-                return duplicate;
-            });
+            return map(state, (duplicate) => duplicate.id === action.payload.id ?
+                {...duplicate, isMerging: true} : duplicate);
         case actions.MERGE_DUPLICATES_SUCCESS:
-            return map(state, (duplicate) => {
-                if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {data: [action.payload.mergedItem], isMerging: false});
-                }
-                return duplicate;
-            });
+            return map(state, (duplicate) => duplicate.id === action.payload.id ?
+                {...duplicate, data: [action.payload.mergedItem], isMerging: false} : duplicate);
         case actions.MERGE_DUPLICATES_ERROR:
-            return map(state, (duplicate) => {
-                if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {isMerging: false});
-                }
-                return duplicate;
-            });
+            return map(state, (duplicate) => duplicate.id === action.payload.id ?
+                {...duplicate, isMerging: false} : duplicate);
 
         case actions.IGNORE_DUPLICATES:
-            return map(state, (duplicate) => {
-                if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {isIgnoring: true});
-                }
-                return duplicate;
-            });
+            return map(state, (duplicate) => duplicate.id === action.payload.id ?
+                {...duplicate, isIgnoring: true} : duplicate);
         case actions.IGNORE_DUPLICATES_SUCCESS:
             return filter(state, (duplicate) => duplicate.id !== action.payload.id);
         case actions.IGNORE_DUPLICATES_ERROR:
-            return map(state, (duplicate) => {
-                if (duplicate.id === action.payload.id) {
-                    return Object.assign({}, duplicate, {isIgnoring: false});
-                }
-                return duplicate;
-            });
+            return map(state, (duplicate) => duplicate.id === action.payload.id ?
+                {...duplicate, isIgnoring: false} : duplicate);
     }
     return state;
 };

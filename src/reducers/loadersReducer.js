@@ -4,9 +4,9 @@ import initialState from "./initialState";
 export default (state = initialState.loaders, action) => {
     switch (action.type) {
         case ENABLE_SALES_LOADER:
-            return Object.assign({}, state, {sales: action.payload.enabled});
+            return {...state, sales: action.payload.enabled};
         case ENABLE_DUPLICATES_LOADER:
-            return Object.assign({}, state, {duplicates: action.payload.enabled});
+            return {...state, duplicates: action.payload.enabled};
     }
     return state;
 };

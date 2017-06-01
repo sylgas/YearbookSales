@@ -23,7 +23,7 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-    headers: {}
+    headersMap: {}
 };
 
 export default Table;

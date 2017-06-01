@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import TableHeader from "../TableHeader/TableHeader";
 import {array} from "prop-types";
 import "./table.less";

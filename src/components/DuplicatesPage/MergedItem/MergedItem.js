@@ -1,5 +1,5 @@
 import Table from "../../Common/Table/Table";
-import * as React from "react";
+import React from "react";
 import {DUPLICATES_TABLE_HEADERS} from "../../../constants/duplicatesHeaders";
 import {map, values} from "lodash";
 import {object} from "prop-types";

@@ -1,5 +1,5 @@
 import SelectableTableCell from "../../../Common/SelectableTableCell/SelectableTableCell";
-import * as React from "react";
+import React from "react";
 import {arrayOf, bool, func, number, object} from "prop-types";
 import "./duplicateTableRow.less";
 import RoundSwitch from "../../../Common/RoundSwitch/RoundSwitch";

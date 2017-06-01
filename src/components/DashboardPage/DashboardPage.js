@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import "./dashboardPage.less";
 import SalesBox from "../YearbookSales/SalesBox";
 import ProgressBox from "../YearbookProgress/ProgressBox";

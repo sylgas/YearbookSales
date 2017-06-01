@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Link from "react-router/es/Link";
 import {element} from "prop-types";
 

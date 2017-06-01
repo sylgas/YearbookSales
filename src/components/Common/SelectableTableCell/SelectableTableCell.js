@@ -1,5 +1,5 @@
 import {any, arrayOf, bool, func, number} from "prop-types";
-import * as React from "react";
+import React from "react";
 import "./selectableTableCell.less";
 import classNames from "classnames";
 

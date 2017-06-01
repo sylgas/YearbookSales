@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import DuplicateTableRow from "./DuplicateTableRow/DuplicateTableRow";
 import {arrayOf, func, number, object} from "prop-types";
 import "./duplicatesTable.less";
 import {EXTENDED_DUPLICATES_TABLE_HEADERS} from "../../../constants/duplicatesHeaders";
-import {areAllFieldsSelected, buildMergedItem, getDuplicatesIds} from "../../../utils/duplicates";
+import * as duplicatesHelper from "../../../utils/duplicates";
 import Table from "../../Common/Table/Table";
 import SelectableTableCreator from "../../Composable/SelectableTableCreator/SelectableTableCreator";
 import ButtonsBar from "../../Common/ButtonsBar/ButtonsBar";
@@ -31,14 +31,14 @@ class DuplicatesTable extends React.Component {
 
     mergeDuplicates = () => {
         const {duplicates, selected, actions} = this.props;
-        const mergedItem = buildMergedItem(duplicates.data, selected);
+        const mergedItem = duplicatesHelper.buildMergedItem(duplicates.data, selected);
         const includedDuplicates = duplicates.data.filter((duplicate, index) => !this.state.omitted[index]);
-        actions.mergeDuplicates(duplicates.id, getDuplicatesIds(includedDuplicates), mergedItem);
+        actions.mergeDuplicates(duplicates.id, duplicatesHelper.getDuplicatesIds(includedDuplicates), mergedItem);
     };
 
     ignoreDuplicates = () => {
         const {duplicates, actions} = this.props;
-        actions.ignoreDuplicates(duplicates.id, getDuplicatesIds(duplicates.data))
+        actions.ignoreDuplicates(duplicates.id, duplicatesHelper.getDuplicatesIds(duplicates.data))
     };
 
     onIncludeChange = (row) => {
@@ -61,7 +61,7 @@ class DuplicatesTable extends React.Component {
         const {duplicates, selected} = this.props;
         const buttonsProps = {
             positive: {
-                disabled: !areAllFieldsSelected(selected, duplicates.data),
+                disabled: !duplicatesHelper.areAllFieldsSelected(selected, duplicates.data),
                 label: "Merge",
                 onClick: this.mergeDuplicates
             },

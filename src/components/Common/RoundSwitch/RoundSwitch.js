@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import "./roundSwitch.less";
 import {bool, func} from "prop-types";
 

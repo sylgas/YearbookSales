@@ -1,5 +1,5 @@
 import DuplicatesTable from "../DuplicatesTable/DuplicatesTable";
-import * as React from "react";
+import React from "react";
 import {array, object} from "prop-types";
 import {areDuplicatesMerged} from "../../../utils/duplicates";
 import MergedItem from "../MergedItem/MergedItem";
@@ -23,7 +23,7 @@ function DuplicatesList({duplicatesList, actions}) {
 
     return (
         <div className="col-md-12">
-            <h2>{duplicatesList.length ? duplicatesList.length + " Duplicates Found" : "No Duplicates Found"} </h2>
+            <h2>{duplicatesList.length > 0 ? duplicatesList.length + " Duplicates Found" : "No Duplicates Found"} </h2>
             {renderDuplicates()}
         </div>
     )

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {object} from "prop-types";
 import "./buttonsBar.less";
 

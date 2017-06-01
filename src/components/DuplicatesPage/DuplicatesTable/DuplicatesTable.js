@@ -7,7 +7,7 @@ import * as duplicatesHelper from "../../../utils/duplicates";
 import Table from "../../Common/Table/Table";
 import SelectableTableCreator from "../../Composable/SelectableTableCreator/SelectableTableCreator";
 import ButtonsBar from "../../Common/ButtonsBar/ButtonsBar";
-
+import classNames from "classnames";
 
 class DuplicatesTable extends React.Component {
 
@@ -47,36 +47,49 @@ class DuplicatesTable extends React.Component {
         this.setState({omitted});
     };
 
-    renderDuplicatesTableRows = () => {
+    createTableRowProps = (duplicate, index) => {
         const {duplicates, handleTableCellSelected, selected} = this.props;
-        return duplicates.data.map((duplicate, index) => (
-            <DuplicateTableRow key={duplicate.studentId} row={index} duplicate={duplicate}
-                               onTableCellClick={handleTableCellSelected} selected={selected}
-                               onIncludeChange={this.onIncludeChange}
-                               isIncluded={!this.state.omitted[index]}/>
+
+        const rowProps = {
+            row: index,
+            duplicate: duplicate,
+            onTableCellClick: handleTableCellSelected,
+            onIncludeChange: this.onIncludeChange
+        };
+
+        return duplicates.isIgnoring ? rowProps : {
+            ...rowProps,
+            isIncluded: !this.state.omitted[index],
+            selected: selected
+        }
+    };
+
+    renderDuplicatesTableRows = () => {
+        return this.props.duplicates.data.map((duplicate, index) => (
+            <DuplicateTableRow key={duplicate.studentId} {...this.createTableRowProps(duplicate, index)}/>
         ))
     };
 
     render() {
         const {duplicates, selected} = this.props;
+        const isLoading = duplicates.isIgnoring || duplicates.isMerging;
+
         const buttonsProps = {
             positive: {
                 disabled: !duplicatesHelper.areAllFieldsSelected(selected, duplicates.data),
+                isLoading: duplicates.isMerging,
                 label: "Merge",
                 onClick: this.mergeDuplicates
             },
             negative: {
                 label: "Ignore",
+                isLoading: duplicates.isIgnoring,
                 onClick: this.ignoreDuplicates
             }
         };
-        const loaderProps = {
-            isLoading: duplicates.isMerging || duplicates.isIgnoring,
-            loadingText: duplicates.isMerging ? "Merging..." : "Ignoring...."
-        };
         return (
-            <div className="duplicates-table">
-                <Table {...loaderProps} headers={EXTENDED_DUPLICATES_TABLE_HEADERS}>
+            <div className={classNames({"duplicates-table": true, " readonly": isLoading})}>
+                <Table headersMap={{header: EXTENDED_DUPLICATES_TABLE_HEADERS}}>
                     {this.renderDuplicatesTableRows()}
                 </Table>
                 <ButtonsBar {...buttonsProps}/>

@@ -1,24 +1,29 @@
 import React from "react";
 import TableHeader from "../TableHeader/TableHeader";
-import {array} from "prop-types";
+import {object} from "prop-types";
+import {map} from "lodash";
 import "./table.less";
-import LoadableComponentCreator from "../../Composable/LoadableComponentCreator/LoadableComponentCreator";
 
-function Table({headers, children}) {
+function Table({headersMap, children}) {
+    const renderHeaders = () =>
+        map(headersMap, (header, type) => (
+            <TableHeader className={type} key={type} headers={header}/>
+        ));
+
     return (
         <table className="ys-table">
-            <thead><TableHeader headers={headers}/></thead>
+            <thead>{renderHeaders()}</thead>
             <tbody>{children}</tbody>
         </table>
     )
 }
 
 Table.propTypes = {
-    headers: array
+    headersMap: object
 };
 
 Table.defaultProps = {
-    headers: []
+    headersMap: {}
 };
 
-export default LoadableComponentCreator(Table);
+export default Table;

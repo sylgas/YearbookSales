@@ -1,5 +1,5 @@
 import {DUPLICATES_TABLE_HEADERS} from "../constants/duplicatesHeaders";
-import {forEach, map} from "lodash";
+import {findKey, forEach, map} from "lodash";
 
 export const areDuplicatesMerged = (duplicates) => duplicates.data.length < 2;
 
@@ -15,10 +15,7 @@ export const buildMergedItem = (duplicatesSet, selected) => {
 };
 
 export const areAllFieldsSelected = (selected, duplicates) => {
-    for (let i = 0; i < DUPLICATES_TABLE_HEADERS.length; i++) {
-        if (!duplicates[selected[i]]) {
-            return false;
-        }
-    }
-    return true;
+    return selected.length === DUPLICATES_TABLE_HEADERS.length && !findKey(selected, (column) => {
+            return !duplicates[selected[column]];
+        });
 };

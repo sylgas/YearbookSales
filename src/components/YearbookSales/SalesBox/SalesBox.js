@@ -1,9 +1,9 @@
 import React from "react";
-import ButtonsFooter from "../../Common/ButtonsFooter";
+import ButtonsFooter from "../../Common/ButtonsFooter/ButtonsFooter";
 import SalesBoxLegend from "../SalesBoxLegend/SalesBoxLegend";
 import SalesBoxChart from "../SalesBoxChart/SalesBoxChart";
 import PropType from "prop-types";
-import Spinner from "../../Common/Spinner";
+import Spinner from "../../Common/Spinner/Spinner";
 
 class SalesBox extends React.Component {
 

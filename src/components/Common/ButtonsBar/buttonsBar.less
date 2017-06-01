@@ -1,0 +1,30 @@
+@import "../../App/colors";
+
+.buttons-bar {
+  height: 40px;
+  margin-top: 19px;
+
+  .bar-button {
+    outline: none;
+    padding: 10px 40px;
+    border: none;
+
+    &.bar-button-positive {
+      color: white;
+      background: @dark-sky-blue;
+      border-radius: 3px;
+
+      &:disabled {
+        color: rgba(255, 255, 255, 0.75);
+        cursor: not-allowed;
+        background: @warm-grey;
+      }
+    }
+
+    &.bar-button-negative {
+      background-color: transparent;
+      color: @dark-sky-blue;
+      text-decoration: underline;
+    }
+  }
+}

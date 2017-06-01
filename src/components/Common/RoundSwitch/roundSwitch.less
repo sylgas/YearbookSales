@@ -1,0 +1,46 @@
+@import "../../App/colors";
+
+.round-switch {
+  display: flex;
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 16px;
+  margin-bottom: 0;
+
+  .round-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: @warm-grey;
+    border-radius: 100px;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      top: 1px;
+      left: 1px;
+      background-color: white;
+      border-radius: 100px;
+      transition: .4s;
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked + .round-slider {
+      background-color: @dark-sky-blue;
+    }
+
+    &:checked + .round-slider:before {
+      transform: translateX(19px);
+    }
+  }
+}

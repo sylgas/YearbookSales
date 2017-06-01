@@ -1,7 +1,7 @@
 import "./salesBoxChart.less";
 import * as React from "react";
 import sizeMe from "react-sizeme";
-import Bubble from "../../Common/Bubble";
+import Bubble from "../../Common/Bubble/Bubble";
 
 const MARGIN_WIDTH = 13; // vertical line (3px) + padding (10px)
 

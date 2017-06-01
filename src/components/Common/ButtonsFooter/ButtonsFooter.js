@@ -1,6 +1,6 @@
-import React from 'react';
-import './common.less'
-import PropTypes from 'prop-types';
+import React from "react";
+import "./buttonsFooter.less";
+import PropTypes from "prop-types";
 
 const ButtonsFooter = ({leftButton, rightButton}) => (
     <div className="buttons-footer text-right">

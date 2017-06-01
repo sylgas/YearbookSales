@@ -39,7 +39,7 @@ class DuplicateTableRow extends React.PureComponent {
         return (
             <tr className={classNames({"duplicate-table-row": true, "omitted": !isIncluded})}>
                 {this.renderSelectableTableCells()}
-                <td><RoundSwitch onChange={this.onIncludeChange} isChecked={isIncluded}/></td>
+                <td><RoundSwitch onChange={this.onIncludeChange} checked={isIncluded}/></td>
             </tr>
         );
     }

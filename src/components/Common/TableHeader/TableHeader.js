@@ -1,21 +1,23 @@
 import React from "react";
-import {array} from "prop-types";
+import {array, string} from "prop-types";
 
-function TableHeader({headers}) {
+function TableHeader({className, headers}) {
     return (
-        <tr>
+        <tr className={className}>
             {headers.map((header, index) => (
-                <th key={header.value}>{header.label}</th>
+                <th key={header.value} colSpan={header.colSpan}>{header.label}</th>
             ))}
         </tr>
     )
 }
 
 TableHeader.propTypes = {
+    className: string,
     headers: array
 };
 
 TableHeader.defaultProps = {
+    className: '',
     headers: []
 };
 

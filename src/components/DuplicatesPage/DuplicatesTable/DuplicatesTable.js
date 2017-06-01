@@ -89,7 +89,7 @@ class DuplicatesTable extends React.Component {
         };
         return (
             <div className={classNames({"duplicates-table": true, " readonly": isLoading})}>
-                <Table headers={EXTENDED_DUPLICATES_TABLE_HEADERS}>
+                <Table headersMap={{header: EXTENDED_DUPLICATES_TABLE_HEADERS}}>
                     {this.renderDuplicatesTableRows()}
                 </Table>
                 <ButtonsBar {...buttonsProps}/>

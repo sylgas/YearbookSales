@@ -12,8 +12,19 @@ function MergedItem({duplicate}) {
         ));
     };
 
+    const headers = {
+        status: [
+            {
+                value: 'status',
+                label: `${duplicate.firstName} ${duplicate.lastName} has been successfully merged.`,
+                colSpan: DUPLICATES_TABLE_HEADERS.length
+            }
+        ],
+        header: DUPLICATES_TABLE_HEADERS
+    };
+
     return (
-        <Table headers={DUPLICATES_TABLE_HEADERS}>
+        <Table headersMap={headers}>
             <tr>
                 {renderMergedItemRowFields()}
             </tr>

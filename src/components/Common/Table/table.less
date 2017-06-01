@@ -5,17 +5,27 @@
   width: 100%;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .45);
 
-  td {
-    text-align: center;
+  thead > tr {
+    &.header {
+      background: @charcoal-grey;
+      color: @light-grey;
+    }
+    &.status {
+      background: @success-green;
+      color: white;
+    }
+  }
+
+  tbody > tr {
     background: white;
+  }
+
+  td {
     padding: 20px;
   }
 
   th {
-    text-align: center;
-    background: @charcoal-grey;
     padding: 15px;
     font-weight: 500;
-    color: @light-grey;
   }
 }
